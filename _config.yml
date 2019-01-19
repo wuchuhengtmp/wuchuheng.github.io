@@ -3,12 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
-description:
-author: John Doe
-language:
-timezone:
+title: 吴楚衡的工作台
+subtitle: 来找我吧！我的目标是星辰大海！
+description: IT菜鸟,写这个博客是防止未来把自己学习的东西给忘记了,也是为了自己学习的那点东西做下总结加深下印象,请多指教^_^!
+keywords: 吴楚衡的工作台
+author: 吴楚衡
+language: zh-CN
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -26,6 +27,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+  - 'library/**'
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -64,7 +66,11 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
-
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
