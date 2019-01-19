@@ -7,8 +7,8 @@ pages:
 
   script:
   - npm install hexo-cli -g
-  - npm install hexo-generator-searchdb --savea \
-  - npm install hexo-nofollow --save \
+  - npm install hexo-generator-searchdb --save
+  - npm install hexo-nofollow --save 
   - npm install
   - hexo deploy
   artifacts:
