@@ -1,0 +1,9 @@
+[submodule "themes/next_6_5_0/source/lib/needsharebutton"]
+	path = themes/next_6_5_0/source/lib/needsharebutton
+	url = https://github.com/theme-next/theme-next-needmoreshare2
+[submodule "themes/next_6_5_0/source/lib/bookmark"]
+	path = themes/next_6_5_0/source/lib/bookmark
+	url = https://github.com/theme-next/theme-next-bookmark.git
+[submodule "themes/next_6_5_0/source/lib/reading_progress"]
+	path = themes/next_6_5_0/source/lib/reading_progress
+	url = https://github.com/theme-next/theme-next-reading-progress
