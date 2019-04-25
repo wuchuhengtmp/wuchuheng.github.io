@@ -82,5 +82,11 @@ SELECT *,(select count({$dbPrefix}vedios.pid) from jdn_vedios where {$dbPrefix}v
     SELECT COUNT(*) FROM `func_find_in_set` WHERE FIND_IN_SET('green',func_find_in_set.tag); /*统计green标签的数量*/
 ```
 
+####  字符替换 `REPLACE`
+``` mysql
+    UPDATE `table` SET `colum`=REPLACE(`colum`,'toReplaceString','targetString')
+```
+
+
 
 
