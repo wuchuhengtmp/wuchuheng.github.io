@@ -1,0 +1,56 @@
+---
+layout: layout
+title: 【vim】开启lua和python
+date: 2019-05-18 18：40
+tags: vim
+category: linux
+---
+
+``` bash
+sudo apt-get remove --purge vim vim-runtime vim-gnome vim-tiny vim-common vim-gui-common  vim-runtime gvim  
+sudo apt-get build-dep vim-gnome
+sudo apt-get install build-essential liblua5.3-0 liblua5.3-dev python-dev ruby-dev libperl-dev libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev
+sudo rm -rf /usr/local/share/vim /usr/bin/vim /usr/local/bin/vim
+sudo mkdir /usr/include/lua5.3/{include,lib}
+sudo cp /usr/include/lua5.3/*.h /usr/include/lua5.3/include/
+sudo ln -sf /usr/lib/x86_64-linux-gnu/liblua5.3.so /usr/include/lua5.3/lib/liblua.so
+sudo ln -sf /usr/lib/x86_64-linux-gnu/liblua5.3.a /usr/include/lua5.3/lib/liblua.a
+sudo apt install vim-gtk3   
+sudo apt install vim-gtk   
+sudo apt install vim-nox
+sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.gtk3 1   
+sudo update-alternatives --set editor /usr/bin/vim.gtk3   
+sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.gtk3 1  
+sudo update-alternatives --set vi /usr/bin/vim.gtk3   
+sudo update-alternatives --install /usr/bin/vi vim /usr/bin/vim.gtk3 1  
+sudo update-alternatives --set vim /usr/bin/vim.gtk3 
+apt install libncurses5-dev \
+libgtk2.0-dev libatk1.0-dev \
+libcairo2-dev python-dev \
+python3-dev git;
+    
+```
+
+``` bash
+cd /tmp
+git clone https://github.com/vim/vim.git
+cd vim
+git checkout v8.0.0503
+make distclean 
+./configure --with-features=huge  \
+    --enable-luainterp     \
+    --with-lua-prefix=/usr/include/lua5.3 \
+    --enable-multibyte \
+    --enable-pythoninterp=yes \
+    --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu/ \
+    --enable-python3interp=yes \
+    --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu/ \
+    --enable-gui=gtk2 \
+    --enable-cscope \
+    --prefix=/usr/local/ \
+    --enable-luainterp \
+    --with-lua-prefix=/usr/include/lua5.3 ;
+    sudo make VIMRUNTIMEDIR=/usr/local/share/vim/vim81  && make install 
+```
+本文参考了https://vi.stackexchange.com/questions/10242/vim-8-0-python-support
+和https://vi.stackexchange.com/questions/10242/vim-8-0-python-support 合并和不断的测试得出上面的配置。
