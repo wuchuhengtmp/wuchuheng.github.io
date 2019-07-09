@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: linux】为archlinux选择国内镜像(转)
+title: 【linux】为archlinux选择国内镜像(转)
 date: 2019-06-01 15:33:35
 categories: linux
 tags: linux
@@ -25,6 +25,7 @@ toc: true
     *   [https://mirrors.nju.edu.cn/archlinux/](https://mirrors.nju.edu.cn/archlinux/) - 南京大学
 
 ## <a name="t1"></a>启用镜像
+<!--more-->
 
 取消你想启用的镜像前的注释 
 
@@ -34,7 +35,6 @@ toc: true
 
 <pre class="prettyprint" name="code">`pacman <span class="hljs-attribute">-Syyu</span><div class="hljs-button signin" data-title="登录后复制"></div>`
 
-*   1</pre>
 
 要注意镜像并不是越多越好,pacman默认只会连接第一个镜像地址,除非第一个不可用才会尝试链接第二个.
 
@@ -47,20 +47,17 @@ toc: true
 
 <pre class="prettyprint" name="code">`<span class="hljs-keyword">cp</span> mirrorlist mirrorlist<span class="hljs-preprocessor">.backup</span><div class="hljs-button signin" data-title="登录后复制"></div>`
 
-*   1</pre>
 
 使用rankmirrors将mirrorlist.back里的镜像按速度排序,找出前6个放到镜像文件里
 
 <pre class="prettyprint" name="code">`rankmirrors -n <span class="hljs-number">6</span> mirrorlist<span class="hljs-preprocessor">.backup</span> &gt; mirrorlist<div class="hljs-button signin" data-title="登录后复制"></div>`
 
-*   1</pre>
 
 *   使用reflector
     直接把最近同步的镜像按速度排序覆盖 `/etc/pacman.d/mirrorlist`
 
 <pre class="prettyprint" name="code">`<span class="hljs-comment">reflector</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">verbose</span> <span class="hljs-literal">-</span><span class="hljs-comment">l</span> <span class="hljs-comment">200</span> <span class="hljs-literal">-</span><span class="hljs-comment">p</span> <span class="hljs-comment">http</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">sort</span> <span class="hljs-comment">rate</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">save</span> <span class="hljs-comment">/etc/pacman</span><span class="hljs-string">.</span><span class="hljs-comment">d/mirrorlist</span><div class="hljs-button signin" data-title="登录后复制"></div>`
 
-*   1</pre>
 
 因此要一个个测试连接速度,可以比较慢,耐心等就好
           </div>
