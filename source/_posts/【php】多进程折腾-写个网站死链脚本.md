@@ -39,7 +39,7 @@ require_once "./vendor/autoload.php";
 class Crawler
 {
     public  static $count =  10; //进程量
-    public  static $domain=  'http://qqhzpjmw.com'; //网站主页
+    public  static $domain=  '<要检测的网址>'; //网站主页
     private static $Redis;
     private static $redis_pass = '';
     private static $redis_host = '127.0.0.1';
@@ -159,13 +159,10 @@ class Crawler
             echo "\n\n* Sub process: {$pid} exited with {$status}";
         } 
     }
-   /**
-     *   
-     *
-     *
-     */ 
 }
+
 Crawler::runAll();
+
 ```
 
 
