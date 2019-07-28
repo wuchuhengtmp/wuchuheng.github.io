@@ -159,3 +159,4 @@ class BannerMissException extends BaseException
 #### 3.总结
 &emsp;这个异常抛出有2种情况。一种是代码自己的异常，默认的错误信息`['code'=>500,'msg'=>'服务器内部错误，不能告诉你','errorCode'=>999]`,一种是主动抛出的。如`throw new \app\lib\exception\BannerMissException();` 。它的这个执行机制是，把一个类比如`BannerMissException`抛出后，由自定义异常类判断是否是属于其基类`BaseException`的这种异常的错误信息格式，如果是，就抛出`BannerMissException`的错误信息，如果不是，就抛出默认的错误信息`['code'=>500,'msg'=>'服务器内部错误，不能告诉你','errorCode'=>999]`。
 &emsp;这种情况，TP5.0手册都有写的，可以查看 https://www.kancloud.cn/manual/thinkphp5/126075 。
+
