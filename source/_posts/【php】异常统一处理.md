@@ -50,6 +50,7 @@ try {
     "require": {}
 }
 ```
+`composer update` 更新下
 这样为只要载入`vender/autoload.php`,就根据命名空间来加载类。
 
 ##### 1.4 创建入口文件和异常处理器
