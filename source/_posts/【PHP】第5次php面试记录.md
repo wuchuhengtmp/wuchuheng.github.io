@@ -168,6 +168,9 @@ B::testSelf();    // print A
 
 #### 8 php 内置引擎模板和rquire
 
+#### 9 php 匿名的使用
+
+
 
 
 
