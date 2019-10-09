@@ -1,5 +1,5 @@
 layout: layout
-title: 「mySQL」mySQL学习笔记-基本常识
+title: 【mySQL】mySQL学习笔记-基本常识
 catogery: mySQL
 tags: mySQL
 date: 2018-06-10 23:33:12
@@ -47,3 +47,10 @@ UPDATE `videos` SET `views`=views+1 WHERE `id` = 1}
 update tableName set columnName = replace(columnName,'string','targetString')
 ```
 
+#### 2. 权限操作
+
+##### 2.1 数据库用户授权
+``` mysql 
+grant all privileges on <database_name>.* to '<user_name>'@'<host>';
+
+```
