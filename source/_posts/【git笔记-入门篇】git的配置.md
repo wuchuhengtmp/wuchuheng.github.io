@@ -64,3 +64,8 @@ git  reset  HEAD~<num回退到最后第几次的提交>
 ```
 git config --global core.quotepath false
 ```
+#### 设置`vim`为默认编辑器
+
+``` bash 
+git config –global core.editor
+```
