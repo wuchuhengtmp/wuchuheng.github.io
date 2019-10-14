@@ -33,11 +33,6 @@ git:x:1004:1004::/home/git:/bin/shell # 改为
 git:x:1004:1004::/home/git:/usr/bin/git-shell
 ```
 
-#### 5, `git status`中文文件名显示乱码
-
-```
-git config --global core.quotepath false
-```
 
 
 
