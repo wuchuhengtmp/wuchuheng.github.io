@@ -108,3 +108,16 @@ date: 2018-06-05 08:53:09
 | 说明             | 操作      |
 | :-:              | :-:       |
 | 调换`tab` 窗口的顺序 | `:tabmove <number>` 当前窗口的要排的位置，0开始 |
+
+### 9 安装 
+
+#### 9.1 centos 7 安装vim8.x
+
+``` bash
+rpm -Uvh http://mirror.ghettoforge.org/distributions/gf/gf-release-latest.gf.el7.noarch.rpm
+rpm --import http://mirror.ghettoforge.org/distributions/gf/RPM-GPG-KEY-gf.el7
+
+yum -y remove vim-minimal vim-common vim-enhanced
+yum -y --enablerepo=gf-plus install vim-enhanced sudo
+```
+
