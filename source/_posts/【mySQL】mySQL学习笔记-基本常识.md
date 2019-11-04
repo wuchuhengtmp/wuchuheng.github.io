@@ -32,10 +32,20 @@ ALTER TABLE `table_name` ADD PRIMARY KEY(字段)；
 ```
 
 #### 2. 数据导出
-- 2.1 导出数据库
+- 2.1 导出数据和结构
 ``` bash
-mysqldump <databaseName> -r <username> -p<passwd> > <echoName>.sql;
+    mysqldump <databaseName> -r <username> -p<passwd> > <echoName>.sql;
 ```
+- 2.2 导出数据和函数
+``` bash
+    mysqldump -h<host> -u<username> -p --opt -R <databasename> > <echoName>;
+```
+- 2.3 导出结构
+``` bash 
+    mysqldump -h<username> -u<username> -p --opt --no-data <databaseName> > <echoName>
+```
+
+
 #### 3. 数据读写
 
 ##### 3.1 自增更新

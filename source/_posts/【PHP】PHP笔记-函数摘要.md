@@ -14,7 +14,7 @@ date: 2019-10-28 23:27:44
    $json = '"{"status":"1","count":"1","info":"OK","infocode":"10000","lives":[{"province":"\u5e7f\u4e1c","city":"\u6df1\u5733\u5e02","adcode":"440300","weather":"\u6674","temperature":"20","winddire                                                                                                 ction":"\u897f\u5317","windpower":"\u22643","humidity":"74","reporttime":"2019-10-28 23:15:45}]}"';
    json_encode($json, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); 
 ```
-{% note info }
+{% note info %}
     加了参数`JSON_PRETTY_PRINT`和`JSON_UNESCAPED_UNICODE`后会格式化，在命令行打印就没那么乱了
 {% endnote %}
 <!--more-->
