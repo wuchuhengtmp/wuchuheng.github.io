@@ -4,8 +4,7 @@ ttile: 【JWT】JWT笔记-JWT初探
 author: 吴楚衡
 tags:
   - jwt
-c 
-tegories: JWT
+tegories: JWT
 date: 2019-09-24 22:13:00
 ---
 
