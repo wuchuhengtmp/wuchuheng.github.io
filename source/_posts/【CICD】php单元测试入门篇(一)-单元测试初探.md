@@ -1,12 +1,13 @@
----
 layout: layout
 title: 【CI/CD】php单元测试入门篇(一)-单元测试初探.
-categories: CI/CD
+categories:
+  - CI/CD
 tags:
   - CI/CD
   - php单元测试
   - 单元测试
-date: 2019-10-51 23:51:46
+author: ''
+date: 2019-11-09 15:51:00
 ---
 
 #### 什么是单元测试？
