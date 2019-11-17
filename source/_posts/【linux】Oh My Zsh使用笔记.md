@@ -1,12 +1,29 @@
 layout: layout
-title: 「linux」Oh My Zsh使用笔记
+title: 【linux】Oh-My-Zsh使用笔记
 categories: linux
 tags:
   - shell
 date: 2018-05-22 21:28:46
 ---
+### 本地环境参数 
 
-## Installation
+| 参数 | 说明 | 
+|:--- | :---|
+| `OS` | `windows10`|
+| `Terminal` | `gitbash`|
+| `线上机OS`| `centos7.6`|
+
+
+### 线上环境参数 
+
+| 参数 | 说明 | 
+|:--- | :---|
+| `OS`| `centos7.6`|
+| `git` | 这个是必备的|
+
+     
+    
+## 1 安装 
 * curl
 ```bash
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -15,9 +32,44 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 ``` bash
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 ```
+<!--more-->
+
+## 2 配置
+
+### 2.1 主题
+
+	
+ 安装字体[SauceCodePro Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/SourceCodePro.zip)。`windowns`系统直接下载复制到`c://windows/fonts`下.在本地`.~/.minttyrc` 文件加入 `Font=SauceCodePro Nerd Font Mono` 用于指定默认这个字体.  
+ 
+ 回到线上机, 在`~/.zshrc` 修改参数`ZSH_THEME="agnoster"`,这里指定的主题为[`agnoster`](https://github.com/agnoster/agnoster-zsh-theme) , [这是仓库](https://github.com/agnoster/agnoster-zsh-theme).  
+ &emsp;然后输入`source ~/.zshrc`重新加载配置， 使用主题生效
+
+### 2.2 插件
+
+#### 2.2.1 安装命令自动提示插件
+	下载`git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+`插件下来后，在`~/.zshrc` 的`plugins加入`zsh-autosuggestions`:
+``` BASH
+plugins=(git ....... zsh-autosuggestions)
+```
+注:如果命令提示颜色没有明暗区分，就在`~/.zshrc`加入
+``` bash
+	TERM=xterm-256color VIEWS=168374
+```
+更多资料去官方[文档](https://asciinema.org/a/37390)看吧.
+
+#### 2.2.2 命令行高亮
+
+ 还是跟上面的一样，先把插件复制下来`git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`  
+ &emsp; 然后在`~/.zshrc` 的`plugin`里加入`zsh-syntax-highlighting`
+ ``` bash
+ 	plugins=( git ... zsh-syntax-highlighting) 
+ ```
+ 最后重载下配置`source ~/.zshrc`。
+ 
+ 
+ 	
 来源：
 * 1.[github](https://github.com/robbyrussell/oh-my-zsh)https://github.com/robbyrussell/oh-my-zsh
 * 2.[官方网站](http://ohmyz.sh/)http://ohmyz.sh/
 <!--more-->
-
-
