@@ -20,6 +20,7 @@ date: 2018-05-22 21:28:46
 |:--- | :---|
 | `OS`| `centos7.6`|
 | `git` | 这个是必备的|
+|`zsh` | 已安装`zsh`,并` sudo  chsh -s /bin/zsh <username>` 默认为登录`sh`|
 
      
     
