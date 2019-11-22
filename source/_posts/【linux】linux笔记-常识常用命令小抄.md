@@ -6,4 +6,10 @@ tags:
 #### 解压`tar.zx`文件
 
  首先要先安装`tar`工具，然后:   
-`tar -xvf filename.tar.xz`  
+`tar -xvf filename.tar.xz`
+
+#### 开启和关闭网卡
+``` bash 
+ifdown <网卡名>
+ifup <网卡名>
+```
