@@ -13,3 +13,9 @@ tags:
 ifdown <网卡名>
 ifup <网卡名>
 ```
+
+#### 查看文件和目录大小
+
+``` bash 
+ du -h --max-depth=<level> <path> 
+```
