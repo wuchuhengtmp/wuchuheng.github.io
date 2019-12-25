@@ -1,15 +1,13 @@
----
 layout: layout
 title: 【Javascript】Javascript笔记-函数摘要
-date: 2019-09-29 06:48:13
-keywords: 
+keywords:
   - Javascript
-categery: 
+categery:
   - Javascript
 tags:
   - Javascript
+date: 2019-09-29 06:48:13
 ---
-
 #### 复制函数
 ``` javascript
 function copyStringToClipboard (str) {
@@ -37,3 +35,5 @@ copyStringToClipboard("abc123");
 ```
 [摘要来源](https://techoverflow.net/2018/03/30/copying-strings-to-the-clipboard-using-pure-javascript/)
 <!--more-->
+
+#### 加载完成文件再执行

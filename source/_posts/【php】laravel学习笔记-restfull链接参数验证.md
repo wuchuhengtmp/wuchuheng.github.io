@@ -38,7 +38,11 @@ class GenerateCreditPreOrder extends FormRequest
 {
     protected function validationData()
     {
-        return $this->route()->parameters();
+         return array_merge(
+            $this->route()->parameters(),
+            $this->input()
+        );
+
     }
 
     /**
@@ -213,20 +217,3 @@ class GenerateCreditPreOrder extends FormRequest
     }
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
