@@ -17,7 +17,7 @@ date: 2019-12-10 13:13:00
          }
    	}) : object
     
-    console.log(foo);
+    console.dir(foo);
     // {name: "hello world"}
   ```
  
@@ -29,7 +29,7 @@ date: 2019-12-10 13:13:00
  ``` javascript
 let Foo = {
 	hasOwnProperty: function() {
-		console.log("transer hasOwnProperty method");
+		console.dir("transer hasOwnProperty method");
     }   
 }
  Foo.hasOwnProperty(); // transer hasOwnProperty method
@@ -45,7 +45,7 @@ let Foo = {
     function foo() {}
     let Bar = new foo();
     foo.prototype.show = function () {
-        console.log('hello world !');
+        console.dir('hello world !');
     }
     Bar.show();// hello world !
     
@@ -65,6 +65,4 @@ let Foo = {
     // 数组对象
     let Arr  = new Array(); 
  ```
-而每个对象或许都有2个属性`__proto__`和`prototype`，前者为自己服务即 
- 
-  
+而每个对象或许都有2个属性`__proto__`和`prototype`，前者为自己服务即
