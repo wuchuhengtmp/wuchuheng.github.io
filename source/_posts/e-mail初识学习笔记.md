@@ -25,4 +25,21 @@ date: 2020-01-31 02:16:00
   
 ### 3 电子邮件是如何实现收发的？
 
-&emsp;邮件的发送是由`smtp`(Simple Mail Transfer Protocol)来传输的，首先邮件服务器会跟邮件客户端建立连接并进行登录验证通过后把邮件发送到服务器上，再读取邮件的头的收件地址的域名后，再根据这个域名通过`smtp`把邮件发送到这域名的`MX`解析指向`IP`主机上，如果没有`MX`记录就用`A`记录的指向。
+&emsp;邮件的发送是由`smtp`(Simple Mail Transfer Protocol)来传输的，首先邮件服务器会跟邮件客户端建立连接并进行登录验证通过后把邮件发送到服务器上，再读取邮件的头的收件地址的域名后，再根据这个域名通过`smtp`把邮件发送到这域名的`MX`解析指向`IP`主机上，如果没有`MX`记录则用`A`记录的指向。
+
+``` mermaid
+classDiagram
+Class01 <|-- AveryLongClass : Cool
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 --> C2 : Where am i?
+Class09 --* C3
+Class09 --|> Class07
+Class07 : equals()
+Class07 : Object[] elementData
+Class01 : size()
+Class01 : int chimp
+Class01 : int gorilla
+Class08 <--> C2: Cool label
+```

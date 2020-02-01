@@ -2,14 +2,16 @@ version: '2'
 
 services:
     hexo:
-        #build: .
-        image: wuchuheng/hexo:latest
+        build: .
+        image: wuchuheng/hexo:0.1.1
         ports:
             - "4000:4000"
         volumes:
             - ./source/:/hexo/source/
             - ./themes/:/hexo/themes/
             - ./_config.yml:/hexo/_config.yml
+            - ./package.json:/hexo/package.json
+            - ./yarn.lock:/hexo/yarn.lock
             - ~/.ssh/:/root/.ssh/
         privileged: true
         container_name: hexo_debug
