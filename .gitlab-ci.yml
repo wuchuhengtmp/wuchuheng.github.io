@@ -6,9 +6,8 @@ pages:
     - node_modules/
 
   script:
-  - yarn add global hexo-cli
-  - export PATH=$PATH:/node_modules/.bin 
-  - yarn install
+  - npm install -g hexo-cli
+  - npm install
   - hexo deploy
   artifacts:
     paths:
