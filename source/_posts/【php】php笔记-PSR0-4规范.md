@@ -1,19 +1,16 @@
----
 layout: layout
-title: 「php」php笔记-PSR[0-4]规范(转载)
-date: 2018-11-28 21:28:46
-categories: 
+title: '「php」php笔记-PSR[0-4]规范(转载)'
+categories:
   - php
-keywords: 
+keywords:
   - php规范
   - php代码规范
   - PSR0-4
-tags: 
-    - php
-    - PSR规范
+tags:
+  - php
+  - PSR规范
+date: 2018-11-28 21:28:46
 ---
-
-
 `PHP`是世界上最伟大的语言，这一点是毋庸置疑的吧。哈哈哈哈哈哈 。这个霸气的开头不错！(^__^)
 
 但是正是因为伟大，所以用的人也就多了，人一多，再牛逼再伟大的东西，都会产生问题，逐渐就造成了很多的分歧。每个人的习惯不一样，所以在一些`PHP`语法上的一些表现也是千差万别，比如这些问题：
@@ -441,3 +438,4 @@ PSR-3规范主要是来规范日志接口(Logger Interface)的，老实讲，其
 
 声明：namespace  \Doctrine\Common\
 调用：\Doctrine\Common\IsolatedClassLoader
+[中文翻译文档](https://learnku.com/docs/psr)
