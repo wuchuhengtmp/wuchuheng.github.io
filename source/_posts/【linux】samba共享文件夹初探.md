@@ -8,12 +8,12 @@ categories:
 date: 2020-02-11 23:26:00
 ---
 ### 1 什么是samba?
- &emap;`samba`是基于`smb`传输协议的数据共享软件，通常用于提供跨平台跨主机的文件共享服务。
+ &emsp;`samba`是基于`smb`传输协议的数据共享软件，通常用于提供跨平台跨主机的文件共享服务。
 
 #### 2 主控端(服务端)安装`samba`
 
 ##### 2.1 准备工作:
-	一台安装好`docker`的`linux`主机.不知道安装可以参考(官方文档)[https://docs.docker.com/]
+	一台安装好`docker`的`linux`主机.不知道安装可以参考[官方文档](https://docs.docker.com/)
 ##### 2.2 启动服务
 
 ``` bash
@@ -42,7 +42,7 @@ sudo iptables -I INPUT -p udp --dport 138 -j ACCEPT
 &emsp;如果是其它的防火墙，请查阅相关的资料。  
 &emsp;最终的效果是让外网能访问到这4个端口，测试可以是`telnet`工具测试`tcp`的端口`139`和`62727`格式为`telnet <IP> <port>` 能连接上则表明端口已经正常了。建议是用`nmap`的端口扫描工具来，格式为`nmap <IP>` 最终能访问的端口都会显示出来。
 {% note warning %}
-	一定要在使用共享文件夹的机子上进行测试
+	一定要在用户机子上进行测试为准。
 {% endnote %}
 
 ### 3 在`windows`下连接
@@ -93,5 +93,3 @@ C:\Windows\system32>
     
 相关资料:
 	smbclient使用说明: https://blog.csdn.net/yexiangcsdn/article/details/82867469
-    
-	
