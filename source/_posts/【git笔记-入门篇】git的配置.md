@@ -63,6 +63,7 @@ git  reset  HEAD~<num回退到最后第几次的提交>
 
 ```
 git config --global core.quotepath false
+export LESSCHARSET=utf-8 // 加入~/.bashrc 则每次登录都生效
 ```
 #### 设置`vim`为默认编辑器
 
