@@ -119,4 +119,149 @@ date: 2020-02-13 20:03:00
 
 &emsp; 以上`demo`演示当数据加载时，页面覆盖一层半透明遮蔽层`div`,相对以往的侵入式，在注册好指令后可以在多个组件进行调用而不用在多个页面上重复地写.
 
-### `Vue.component`的用法
+### 2 `Vue.component`的用法
+&emsp; 新建组件demo
+``` html
+<html>
+    <head>
+        <title>Vue.Conponent 用法</title>
+        <meta charset="utf-8"/>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+                <Test :msg="message"></Test>
+        </div>
+        <script>
+            Vue.component('Test', {
+                template: '<div>{{msg}}</div>',
+                props: {
+                    msg: {
+                        type: String,
+                        default: 'default message'
+                    }
+                }
+            });
+            new Vue({
+                el: '#root',
+                data: () => {
+                    return {
+                        message: "test Component"
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
+```
+
+### 3  `Vue.extend`用法
+
+&emsp;`Vue.extend`同上的一样，都是新建组件的。
+``` html
+<html>
+    <head>
+        <title>Vue.extend 用法</title>
+        <meta charset="utf-8"/>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+                <Test :msg="message"></Test>
+        </div>
+        <script>
+            const component = Vue.extend({
+                template: '<div>{{msg}}</div>',
+                props: {
+                    msg: {
+                        type: String(),
+                        default: 'default message'
+                    }
+                }
+            });
+            Vue.component('Test', component);
+            new Vue({
+                el: '#root',
+                data: () => {
+                    return {
+                        message: "test Extend Component"
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
+```
+
+#### 3.2 用`Vue.extend`封装通用的加载庶罩层
+
+&emsp; 在组件内暴露的调用接口为：
+*  使用: `Vue.prototype.loading(:String arg)`;
+*  关闭 `Vue.prototype.loadiong()()`
+``` html
+<html>
+    <head>
+        <title>Vue.extend 用法</title>
+        <meta charset="utf-8"/>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            #loading-wrapper {
+                position: fixed;
+                top: 0;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, .7);
+                color: #ffffff;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root">
+            <button @click="showLoading">显示loading</button>
+        </div>
+        <script>
+            function Loading(msg) {
+                const LoadingComponent = Vue.extend({
+                    template: '<div id="loading-wrapper">{{msg}}</div>',
+                    props: {
+                        msg: {
+                            type: String,
+                            default: 'loading...'
+                        }
+                    }
+                }, 'LoadingComponent');
+                const div = document.createElement('div');
+                div.setAttribute('id', 'loading-wrapper');
+                document.body.append(div);
+                new LoadingComponent({
+                    props: {
+                        msg: {
+                            type: String,
+                            default: msg
+                        }
+                    }
+                }).$mount('#loading-wrapper');
+                return () => {
+                    document.body.removeChild(document.getElementById('loading-wrapper'));
+                }
+            }
+            Vue.prototype.$loading = Loading;
+            new Vue({
+                el: '#root',
+                methods: {
+                    showLoading() {
+                        const hide = this.$loading('正在加载中...');
+                        setTimeout(() => {
+                            hide();
+                        }, 2000)
+                     }
+                }
+            });
+        </script>
+    </body>
+</html>
+```
