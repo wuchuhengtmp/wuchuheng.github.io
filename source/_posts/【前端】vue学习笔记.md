@@ -265,3 +265,473 @@ date: 2020-02-13 20:03:00
     </body>
 </html>
 ```
+
+### 4 `Vue.use`的用法
+
+``` html
+<html>
+    <head>
+        <title>Vue.use 用法</title>
+        <meta charset="utf-8"/>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            #loading-wrapper {
+                position: fixed;
+                top: 0;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, .7);
+                color: #ffffff;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root">
+            <button @click="showLoading">显示loading</button>
+        </div>
+        <script>
+            /**
+             * 调用方式
+             *
+             * 1创建挂载点，2，创建组件并实例化后并挂载到1的挂载点，3返回删除组件的回调用于删除组件
+             *
+             * @type {{install: loadingPlugin.install}}
+             */
+            const loadingPlugin = {
+                install: function(vm) {
+                    const LoadingComponent = vm.extend({
+                       template: '<div id="loading-wrapper">{{msg}}</div>',
+                        props: {
+                           msg: {
+                               type: String,
+                               default: 'loading...'
+                           }
+                        }
+                    }, 'LoadingComponent');
+                    function Loading(msg) {
+                        const div = document.createElement('div');
+                        div.setAttribute('id', 'loading-wrapper');
+                        document.body.append(div)
+                        console.log(div)
+                        new LoadingComponent({
+                            props: {
+                                msg: {
+                                    type: String,
+                                    default: msg
+                                }
+                            }
+                        }).$mount('#loading-wrapper');
+                        return () => {
+                            document.body.removeChild(document.getElementById('loading-wrapper'));
+                        }
+                    }
+                    vm.prototype.$loading = Loading;
+                }
+            };
+            // 载入插件
+            Vue.use(loadingPlugin);
+            new Vue({
+                el: '#root',
+                methods: {
+                    showLoading() {
+                        // 调用loading模块
+                        const hide = this.$loading('加载中...');
+                        setTimeout(() => {
+                            hide();
+                        }, 2000)
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
+```
+
+### 5 组件通信`provide`和`inject`的使用
+``` html
+<html>
+    <head>
+        <title>组件通信provide和inject的使用</title>
+        <meta charset="utf-8"/>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <Test></Test>
+        </div>
+        <script>
+            // 1 定义插件
+            function registerPlugin(vm) {
+                // 1.1 父组件
+                Vue.component('Test', {
+                    template: '<div>{{message}}<Test2 /></div>',
+                    // 对外的接口，给别的组件访问
+                    provide() {
+                        return {
+                            elTest: this
+                        }
+                    },
+                    data() {
+                        return {
+                            message: 'message from Test'
+                        }
+                    },
+                    methods: {
+                        change(component) {
+                            this.message = 'message from ' + component;
+                        }
+                    }
+                });
+                // 1.1.1 子组件
+                Vue.component('Test2', {
+                    template: '<Test3/>'
+                });
+                // 1.1.1.1子子组件
+                Vue.component('Test3', {
+                    template: '<button @click="changeMessage">change</button>',
+                    // 获取爷爷组件
+                    inject: ['elTest'],
+                    methods: {
+                        changeMessage() {
+                            // 调用爷爷组件的方法
+                            this.elTest.change(this.$options._componentTag);
+                        }
+                    }
+                });
+            }
+            // 2 注册组件 
+            Vue.use(registerPlugin);
+            new Vue({
+                el: '#root'
+            });
+        </script>
+    </body>
+</html>
+```
+
+### 6 过滤器的使用 `filter`
+&emsp; 用于对模板的输出进一步处理，通常用于文本的处理
+``` html
+<html>
+    <head>
+        <title>过虑器的使用 filter</title>
+        <meta charset="utf-8"/>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            {{message | lower}}
+        </div>
+        <script>
+           new Vue({
+               el: '#root',
+               filters: {
+                   lower(value) {
+                       return value.toLowerCase()
+                   }
+               },
+               data() {
+                   return {
+                       message: 'Hello Vue'
+                   }
+               }
+           });
+        </script>
+    </body>
+</html>
+```
+
+### 7`watch`的使用
+``` html
+<html>
+    <head>
+        <title>监听器watch的使用</title>
+        <meta charset="utf-8"/>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <h3>Watch 用法1： 常见用法</h3>
+            <input v-model="message">
+            <span>{{copyMessage}}</span>
+        </div>
+        <div id="root2">
+            <h3>Watch 用法2： 绑定方法</h3>
+            <input v-model="message">
+            <span>{{copyMessage}}</span>
+        </div>
+        <div id="root3">
+            <h3>Watch 用法3：deep + handler</h3>
+            <input v-model="deepMessage.a.b">
+            <span>{{copyMessage}}</span>
+        </div>
+        <div id="root4">
+            <h3>Watch 用法4：immediate</h3>
+            <input v-model="message">
+            <span>{{copyMessage}}</span>
+        </div>
+        <div id="root5">
+            <h3>Watch 用法5：绑定多个handler</h3>
+            <input v-model="message">
+            <span>{{copyMessage}}</span>
+        </div>
+        <div id="root6">
+            <h3>Watch 用法6：监听对象属性</h3>
+            <input v-model="message.a.b">
+            <span>{{copyMessage}}</span>
+        </div>
+
+        <script>
+            // 用法1， 直接在watch内声明要监听的属性，一旦属性一变化就触发监听的方法
+           new Vue({
+               el: '#root',
+                watch: {
+                   message(value) {
+                       this.copyMessage = value;
+                   }
+                },
+               data() {
+                   return {
+                       message: 'Hello Vue',
+                       copyMessage: ''
+                   }
+               }
+           });
+           // 用法2 ，
+            new Vue({
+                el: '#root2',
+                watch: {
+                    message: 'handleMessage'
+                },
+                data() {
+                    return {
+                        message: 'hello Vue',
+                        copyMessage: ''
+                    }
+                },
+                methods: {
+                   handleMessage(value) {
+                       this.copyMessage = value;
+                   }
+                }
+            });
+            // 用法3,  这个是对象监听，如果有任意一属性发生变化则触发，如果deep:false，则反之
+            new Vue({
+                el: '#root3',
+                watch: {
+                    deepMessage: {
+                        handler: 'handleDeepMessage',
+                        deep: true
+                    }
+                },
+                data: {
+                    deepMessage: {
+                        a: {
+                            b: 'Deep Message',
+                            bc: 'hello'
+                        }
+                    },
+                    copyMessage: ''
+                },
+                methods: {
+                    handleDeepMessage(value) {
+                        this.copyMessage = value.a.bc;
+                    }
+                }
+            });
+            // 用法4: immediate，在数据变动前就初始化地先触发一次，然后再监听再触发，相当于:
+            //created() {
+            //    this.copyMessage = this.message;
+            //}
+            new Vue({
+                el: '#root4',
+                watch: {
+                    message: {
+                        handler: 'handleMessage',
+                        immediate: true
+                    }
+                },
+                data: {
+                    message: 'init info',
+                    copyMessage: ''
+                },
+                methods: {
+                    handleMessage(value) {
+                        this.copyMessage = value;
+                    }
+                }
+            });
+            // 用法5，就是当监听器触发时，依次执行绑定的方法或闭包
+            new Vue({
+                el: '#root5',
+               data: {
+                    message: 'init info',
+                    copyMessage: ''
+               },
+                watch: {
+                  message: [
+                      {
+                          handler: 'handleMessage',
+                          immediate: true
+                      },
+                      {
+                          handler: 'handleMessage2',
+                          immediate: true
+                      },
+                      {
+                          handler(value) {
+                              this.copyMessage = this.copyMessage + 3;
+                          },
+                          immediate: true
+                      }
+                  ]
+                },
+                methods: {
+                    handleMessage(value) {
+                        this.copyMessage = value;
+                    },
+                    handleMessage2(value) {
+                        this.copyMessage = this.copyMessage + 2;
+                    }
+                }
+            });
+            // 用法6, 监听对象的单个属性，类似于用法3，但用法3监听的是整个对象如果哪个属性发生变化，则要遍历到，所以这个会省性能很多
+            new Vue({
+                el: '#root6',
+                data: {
+                    message: {
+                        a: {
+                            b: 'hello vue'
+                        }
+                    },
+                    copyMessage: ''
+                },
+                watch: {
+                    'message.a.b': function(value) {
+                        this.copyMessage = value;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
+```
+
+### 8 `class`和`style`的绑定用法
+``` html
+<html>
+  <head>
+    <title>class 和 style 绑定的高级用法</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <div :class="['active', 'normal']">数组绑定多个class</div>
+      <div :class="[{active: isActive}, 'normal']">数组包含对象绑定class</div>
+      <div :class="[showWarning(), 'normal']">数组包含方法绑定class</div>
+      <div :style="[warning, bold]">数组绑定多个style</div>
+      <div :style="[warning, mix()]">数组包含方法绑定style</div>
+      <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }">style多重值,从flex开始，尝试是否兼容，反之则换下一个尝试，一直下去</div>
+    </div>
+    <script>
+      new Vue({
+        el: '#root',
+        data() {
+          return {
+            isActive: true,
+            warning: {
+              color: 'orange'
+            },
+            bold: {
+              fontWeight: 'bold'
+            }
+          }
+        },
+        methods: {
+          showWarning() {
+            return 'warning'
+          },
+          mix() {
+            return {
+              ...this.bold,
+              fontSize: 20
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
+```
+
+### 9 `Vue.observable`全局状态管理(Vue 2.6)
+&emsp; `"Vue.observable`通常用于保存全局状态，类似于`Vuex`,但更简单。
+``` html
+<html>
+    <head>
+        <title>Vue.observable的使用</title>
+        <meta charset="utf-8"/>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="root1">
+           组件1状态：
+            {{message}}
+        </div>
+        <div id="root2">
+            组件2状态: {{message}}
+        </div>
+        <div id="root3">
+            输入状态: <input v-model="new_message"/>
+        </div>
+        <script>
+            const state = Vue.observable({ message: 'Vue 2.6' });
+            const mutation = {
+                setMessage(value) {
+                    state.message = value;
+                }
+            }
+            //组件1
+            new Vue({
+                el: '#root1',
+                message() {
+                computed: {
+                        return state.message;
+                    }
+                }
+            });
+            // 组件2
+            new Vue({
+                el: '#root2',
+                computed: {
+                    message() {
+                        return state.message;
+                    }
+                }
+            });
+            // 修改状态
+            new Vue({
+                el: '#root3',
+                watch: {
+                    new_message(value) {
+                        mutation.setMessage(value)
+                    }
+                },
+                data: {
+                    new_message: state.message
+                }
+            });
+
+        </script>
+    </body>
+</html>
+```
+
+
+
+
+
