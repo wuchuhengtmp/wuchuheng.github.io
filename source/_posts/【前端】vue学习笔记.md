@@ -730,8 +730,78 @@ date: 2020-02-13 20:03:00
     </body>
 </html>
 ```
-
-
-
-
-
+### 10 `slot`插槽的使用
+``` html
+<html>
+    <head>
+        <title>Vue.observable的使用</title>
+        <meta charset="utf-8"/>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <H1>案例1： slot的基本用法</H1>
+            <Test>
+                <template v-slot="slot_data">
+                    <div>默认修改无name slot:修改所有默认插槽内的默认参数并打印所有参数: {{slot_data}}</div>
+                </template>
+                <template v-slot:foo="foo_slot">
+                    <div>指定修改:修改通过v-slot:name指定foo插槽，并进行修改{{foo_slot}}</div>
+                </template>
+                <template v-slot:bar="{component_data}">
+                    <div>指定修改:修改bar插槽，并把组件的数据也传进来{{component_data}}</div>
+                </template>
+            </Test>
+        </div>
+        <div id="root2">
+           <h1>案例2: 动态插槽</h1>
+            <Test>
+                <template v-slot:[section]="slot">
+                   当前指定的插槽为: {{section}}
+                </template>
+            </Test>
+            <button @click="change">更换插槽</button>
+        </div>
+        <script>
+            Vue.component('Test', {
+                template:
+                    '<div>' +
+                        '<slot  name="foo" :from_component_data="obj" :foo="\'be_define_in_template\'">' +
+                            '<div>未修改:you don`t change me, I`m foot slot</div>' +
+                        '</slot>' +
+                        '<slot  name="bar" :component_data="obj" >' +
+                        '   <div>未修改:you don`t change me, I`m bar slot</div>' +
+                        '</slot>' +
+                        '<slot :data_from_own="obj" :define_on_template="\'hello world\'">\<' +
+                            'div>未修改:the third slot</div>' +
+                        '</slot>' +
+                        '<slot :data_from_own="obj" :define_on_template="\'hello world\'">' +
+                            '<div>未修改:the fourth slot</div>' +
+                        '</slot>' +
+                        '<slot  name="last_slot" >' +
+                        '   <div>未修改:you don`t change me, I`m bar last_slot</div>' +
+                        '</slot>' +
+                    '</div>',
+                data() {
+                    return {
+                        obj : { a: 1, b: 2}
+                    }
+                }
+            });
+            new Vue({ el: '#root'});
+            new Vue({
+                el: '#root2',
+                data: {
+                    section: 'foo'
+                },
+                methods: {
+                    change() {
+                        let slots = ['foo', 'bar', 'last_slot'];
+                        this.section = slots[Math.floor(Math.random()*slots.length)];
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
+```
