@@ -10,7 +10,7 @@ date: 2018-05-29 12:47:51
   [jqury-confirm](http://craftpip.github.io/jquery-confirm/)是一款web页面美化提示框的插件。依赖于[jquery](https://jquery.com)。  
 下载:  
   &emsp; [github下载](https://github.com/craftpip/jquery-confirm)
-  &emsp; <a href="/library/download/front-end/jquery-confirm-v3.3.0.zip" download="jquery-confirm-v3.3.0.zip">本站V3.3.0.zip下载</a>
+  &emsp; <a href="http://qiniu.wuchuheng.com/jquery-confirm-v3.3.0.zip" download="jquery-confirm-v3.3.0.zip">本站V3.3.0.zip下载</a>
 ### 2.使用 
 <!--more-->
 
