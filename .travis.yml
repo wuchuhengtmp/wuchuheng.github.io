@@ -1,0 +1,42 @@
+language: node_js  # 设置语言
+
+dist: bionic
+
+node_js: 10
+
+cache:
+    apt: true
+    directories:
+        - node_modules # 缓存不经常更改的内容
+
+before_install:
+  - export TZ='Asia/Shanghai' # 更改时区
+  - gunzip .travis/travis.key.enc.gz
+  - openssl aes-256-cbc -in .travis/travis.key.enc -out ~/.ssh/id_rsa -d -k ${SSH_PWD} 
+  - chmod 600 ~/.ssh/id_rsa
+  - eval $(ssh-agent -s)
+  - ssh-add
+  - git config --global user.name 'wuchuheng'
+  - git config --global user.email 'wuchuheng@163.com'
+
+install:
+  - pwd
+  - npm install -g hexo --save
+  - npm install
+
+script:
+  - hexo clean
+  - hexo g
+  - hexo d
+
+branches:
+  only:
+    - hexo  
+
+env:
+ global:
+
+addons:
+  ssh_known_hosts:
+    - gitee.com
+    - github.com

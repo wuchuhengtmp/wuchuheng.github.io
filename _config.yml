@@ -74,4 +74,5 @@ search:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: git@e.coding.net:wuchuheng/wuchuheng.coding.me.git
