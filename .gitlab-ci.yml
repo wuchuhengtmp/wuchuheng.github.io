@@ -9,7 +9,7 @@ pages:
   - npm install -g hexo-cli
   - npm install
   - npm install hexo-deployer-git --save
-  - mkdir ~/.ssh && cp id_rsa ~/.ssh/id_rsa
+  - mkdir ~/.ssh && cp id_rsa ~/.ssh/id_rsa && chmod 0600 ~/.ssh/id_rsa
   - git config --global user.email "root@wuchuheng.com"
   - git config --global user.name "wuchuheng"
   - echo StrictHostKeyChecking no >> /etc/ssh/ssh_config
