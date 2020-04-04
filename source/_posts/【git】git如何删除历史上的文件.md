@@ -24,6 +24,8 @@ $ git rev-list --all | xargs -rL1 git ls-tree -r --long | sort -uk3 | sort -rnk4
 ```
 ![](http://qiniu.wuchuheng.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200403194714.png)
 
+<!--more-->
+
 #### 2.2 删除文件
 
 ``` bash
@@ -37,7 +39,3 @@ $ git rev-list --all | xargs -rL1 git ls-tree -r --long | sort -uk3 | sort -rnk4
  > 注：本文参考资料  
  [How can I remove a large file from my commit history?](https://www.deployhq.com/git/faqs/removing-large-files-from-git-history)  
 [彻底删除git中的较大文件（包括历史提交记录）](https://blog.csdn.net/HappyRocking/article/details/89313501)
- 
-
-
-
