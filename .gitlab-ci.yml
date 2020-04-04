@@ -1,4 +1,4 @@
-image: node:13
+image: node:9
 
 pages:
   cache:
@@ -12,8 +12,13 @@ pages:
   - mkdir ~/.ssh && cp id_rsa ~/.ssh/id_rsa && chmod 0600 ~/.ssh/id_rsa
   - git config --global user.email "root@wuchuheng.com"
   - git config --global user.name "wuchuheng"
-  - echo "LogLevel=quiet" >> ~/.ssh/config
-  - hexo deploy
+  - eval $(ssh-agent -s)
+  - chmod 700 id_rsa
+  - ssh-add id_rsa
+  - echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+  - hexo d -g
+  - echo "Deploy succssed!"
+
   artifacts:
     paths:
     - public
