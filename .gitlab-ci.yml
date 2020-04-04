@@ -11,9 +11,7 @@ pages:
   - npm install hexo-deployer-git --save
   - git config --global user.email "root@wuchuheng.com"
   - git config --global user.name "wuchuheng"
-  - eval $(ssh-agent -s)
-  - chmod 700 id_rsa
-  - ssh-add id_rsa
+  - mkdir ~/.ssh/ && cp id_rsa ~/.ssh/ && chmod 600 ~/.ssh/id_rsa 
   - echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
   - hexo d -g
   - echo "Deploy succssed!"

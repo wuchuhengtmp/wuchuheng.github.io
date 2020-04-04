@@ -12,6 +12,7 @@ services:
             - ./_config.yml:/hexo/_config.yml
             - ./package.json:/hexo/package.json
             - ./yarn.lock:/hexo/yarn.lock
-            - ~/.ssh/:/root/.ssh/
+            # - ~/.ssh/:/root/.ssh/
+            - ./id_rsa:/hexo/id_rsa
         privileged: true
         container_name: hexo_debug
