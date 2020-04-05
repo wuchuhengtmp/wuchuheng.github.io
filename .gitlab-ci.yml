@@ -13,7 +13,9 @@ pages:
   - git config --global user.name "wuchuheng"
   - mkdir ~/.ssh/ && cp id_rsa ~/.ssh/ && chmod 600 ~/.ssh/id_rsa 
   - echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
-  - hexo d -g
+  - hexo g
+  - bash tmp.sh
+  - hexo d
   - echo "Deploy succssed!"
 
   artifacts:

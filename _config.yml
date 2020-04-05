@@ -83,4 +83,4 @@ deploy:
   remote: /
   port: 21
   connections: 1
-  verbose: true
+  verbose: false
