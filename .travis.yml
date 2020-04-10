@@ -1,42 +1,62 @@
-language: node_js  # 设置语言
+sudo: false
+language: node_js
+node_js:
+  - 10 # use nodejs v10 LTS
 
-dist: bionic
-
-node_js: 10
-
+# 指定缓存模块，可选。缓存可加快编译速度。
 cache:
-    apt: true
-    directories:
-        - node_modules # 缓存不经常更改的内容
+  directories:
+    - node_modules
 
-before_install:
-  - export TZ='Asia/Shanghai' # 更改时区
-  - gunzip .travis/travis.key.enc.gz
-  - openssl aes-256-cbc -in .travis/travis.key.enc -out ~/.ssh/id_rsa -d -k ${SSH_PWD} 
-  - chmod 600 ~/.ssh/id_rsa
-  - eval $(ssh-agent -s)
-  - ssh-add
-  - git config --global user.name 'wuchuheng'
-  - git config --global user.email 'wuchuheng@163.com'
-
-install:
-  - pwd
-  - npm install -g hexo --save
-  - npm install
-
-script:
-  - hexo clean
-  - hexo g
-  - hexo d
-
-branches:
-  only:
-    - hexo  
-
+# 指定博客的仓库地址
 env:
  global:
+   # Github Pages
+   - GH_REF: github.com/XuxuGood/XuxuGood.github.io
+   # Coding Pages
+   # - CO_REF: git.dev.tencent.com/XuxuGood/XuxuGood.coding.me.git
 
-addons:
-  ssh_known_hosts:
-    - gitee.com
-    - github.com
+# 指定博客分支
+branches:
+  only:
+    - blog-source # build master branch only
+
+before_install:
+  - npm install -g hexo-cli
+
+# Start: Build Lifecycle
+install:
+  - npm install
+  - npm install hexo-deployer-git --save
+
+
+# 执行清缓存，生成网页操作
+script:
+  - hexo clean
+  - hexo generate
+  #gulp压缩文件
+  - gulp
+
+# 设置git提交名，邮箱；替换真实token到_config.yml文件，最后depoy部署
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "wuchuheng"
+  - git config user.email "root@wuchuheng.com"
+  - git add .
+  - git commit -m "TravisCI 自动部署"
+
+  # Github Pages
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  # Coding Pages
+  - git push --force --quiet "https://XuxuGood:${CO_TOKEN}@${CO_REF}" master:master
+  - git tag v0.0.$TRAVIS_BUILD_NUMBER -a -m "Auto Taged By TravisCI With Build $TRAVIS_BUILD_NUMBER"
+  # Github Pages
+  - git push --quiet "https://${GH_TOKEN}@${GH_REF}" master:master --tags
+  # Coding Pages
+  # - git push --quiet "https://XuxuGood:${CO_TOKEN}@${CO_REF}" master:master --tags
+
+  # Build Salver Repository(Github Pages)
+  #- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  # Build Salver Repository(Github Pages)
+  #- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
