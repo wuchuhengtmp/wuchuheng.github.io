@@ -76,11 +76,3 @@ search:
 deploy:
   # type: git
   # repo: git@e.coding.net:wuchuheng/wuchuheng.coding.me.git
-  type: ftpsync
-  host: jd.wuchuheng.com
-  user: wuchuheng.com
-  pass: wuchuheng.com
-  remote: /
-  port: 21
-  connections: 1
-  verbose: false
