@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon.ico?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon.ico?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="打造高性能计算型服务器    说明原因:为什么打造属于自己的计算型高性能服务器？因为别人的服务器出问题了，找不到原因感到不爽！理由2：使用第三方的面板固然方便，但(我也不想)，功能越强会开启大量的进程，占用大量的计算资源。    环境:centos 7 最小化安装">
+<meta name="keywords" content="php,mySQL,aparche">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「linux」lamp配置">
+<meta property="og:url" content="/2018/05/15/lamp配置/index.html">
+<meta property="og:site_name" content="吴楚衡">
+<meta property="og:description" content="打造高性能计算型服务器    说明原因:为什么打造属于自己的计算型高性能服务器？因为别人的服务器出问题了，找不到原因感到不爽！理由2：使用第三方的面板固然方便，但(我也不想)，功能越强会开启大量的进程，占用大量的计算资源。    环境:centos 7 最小化安装">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-15T08:26:58.795Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「linux」lamp配置">
+<meta name="twitter:description" content="打造高性能计算型服务器    说明原因:为什么打造属于自己的计算型高性能服务器？因为别人的服务器出问题了，找不到原因感到不爽！理由2：使用第三方的面板固然方便，但(我也不想)，功能越强会开启大量的进程，占用大量的计算资源。    环境:centos 7 最小化安装">
+
+
+
+
+
+
+  <link rel="canonical" href="/2018/05/15/lamp配置/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>「linux」lamp配置 | 吴楚衡</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">吴楚衡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">来找我吧！我的目标是星辰大海！</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">101</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">77</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">17</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-历史">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/history/" rel="section"><i class="menu-item-icon fa fa-fw fa-history"></i> <br>历史</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-书单">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/book-list/index.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书单</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-工具">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tool-list/index.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>工具</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2018/05/15/lamp配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴楚衡">
+      <meta itemprop="description" content="IT菜鸟,写这个博客是防止未来把自己学习的东西给忘记了,也是为了自己学习的那点东西做下总结加深下印象,请多指教^_^!">
+      <meta itemprop="image" content="/uploads/favicon.ico">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="吴楚衡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">「linux」lamp配置<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL3d1Y2h1aGVuZy9oZXhvL3RyZWUvbWFzdGVyL3NvdXJjZS9fcG9zdHMvX3Bvc3RzL2xhbXDphY3nva4ubWQ=" title="编辑"><i class="fa fa-pencil"></i></span>
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-15 23:43:52" itemprop="dateCreated datePublished" datetime="2018-05-15T23:43:52+08:00">2018-05-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-04-15 16:26:58" itemprop="dateModified" datetime="2020-04-15T16:26:58+08:00">2020-04-15</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2018/05/15/lamp配置/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/05/15/lamp配置/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>打造高性能计算型服务器<br>    说明原因:为什么打造属于自己的计算型高性能服务器？因为别人的服务器出问题了，找不到原因感到不爽！理由2：使用第三方的面板固然方便，但(我也不想)，功能越强会开启大量的进程，占用大量的计算资源。<br>    环境:centos 7 最小化安装<br>    <a id="more"></a></p>
+<h2 id="一-安装前准备"><a href="#一-安装前准备" class="headerlink" title="一,安装前准备"></a>一,安装前准备</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install wget</span></span><br><span class="line"><span class="comment"># yum install vim //安装这个就不用我说了</span></span><br><span class="line"><span class="comment"># yum remove seliux*  //卸载selinux软件。后期开发这个安装机制会对后面开发有影响。所以干脆卸了。</span></span><br></pre></td></tr></table></figure></div>
+<!--more-->
+<h2 id="二-安装apache"><a href="#二-安装apache" class="headerlink" title="二,安装apache"></a>二,安装apache</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># yum install httpd</span><br><span class="line">　　# systemctl enable httpd.servcie //加入开机启动</span><br><span class="line">　 # firewall-cmd --zone=public --add-port=80/tcp --permanent //防火墙打开80</span><br><span class="line">　 #  tcping [ip] [port] //使用tcping工具查看端口是否开启(tcping当前没有yum包。要自己找安装包来安装。或直接在浏览器输入ip，进入apache的欢页面。就成功了)</span><br><span class="line">　　# mkdir vhost-conf</span><br><span class="line">　　# echo &quot;Include vhost-conf/*.conf&quot; &amp;&gt;&gt; /etc/httpd/conf/httpd.conf //包含vhost-conf目录下的.conf后缀的配置文件。为了便于区分，建议每个站点做1个配置文件，如:站点test.com 可以是test_com.conf</span><br><span class="line">　　在vhost-conf 新建站点test.com的配置文件：</span><br><span class="line">　　　　# vim test_com　　　　　　</span><br><span class="line">　　　　　　&lt;VirtualHost *:80&gt;</span><br><span class="line">　　　　　　　　ServerName test.com</span><br><span class="line">　　　　　　　　ServerAlias test2.com www.test1.com  #多域名</span><br><span class="line">　　　　　　　　DocumentRoot /var/www/html/test</span><br><span class="line">　　　　　　　　DirectoryIndex index.html</span><br><span class="line">　　　　　　&lt;/VirtualHost&gt;</span><br><span class="line">　　　　　　&lt;Directory &quot;/var/www/html/test&quot;&gt;</span><br><span class="line">　　　　　　　　Options +Includes -Indexes</span><br><span class="line">　　　　　　　　llowOverride All</span><br><span class="line">　　　　　　　　Order Deny,Allow</span><br><span class="line">　　　　　　　　Allow from All</span><br><span class="line">　　　　　　&lt;/Directory&gt;</span><br><span class="line"></span><br><span class="line">　　　　</span><br><span class="line">　　　　# mkdir /var/www/html/test //在 /var/www/html/新建目录test 网站的文件就是放置在这里</span><br><span class="line">　　　　 (如果就想将网站文件放置在/var/www/html/test/ 可以在这在这新建一个软链接将达到将文件放置在你想放的地方。如: #mkdir -p /www/test/&amp;&amp; rm -rf /var/www/html/test/ &amp;&amp; ln -s /www/test /var/www/html/test/后面将网站文件放置在/www/test/)</span><br></pre></td></tr></table></figure></div>
+<h2 id="三-安装mysql"><a href="#三-安装mysql" class="headerlink" title="三,安装mysql"></a>三,安装mysql</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">　　　　# wget http://repo.mysql.com/mysql57-community-release-el7-10.noarch.rpm //获取官方yum包</span><br><span class="line">　　　　# rpm -Uvh mysql57-community-release-el7-10.noarch.rpm //更新rpm包</span><br><span class="line">　　　　# yum install  -y  mysql-community-server //安装msyql</span><br><span class="line">　　　　# systemctl start msyqld.service //启动</span><br><span class="line">　　　　# firewall-cmd --zone=public --add-port=3360/tcp --permanent //启用3306端口</span><br><span class="line">　　　　# systemctl resart firewalld.servcie //重启防火墙</span><br><span class="line">　　　　# firewall-cmd --zone=public --list-ports //查看3306端口是启用</span><br><span class="line">　　　　# grep &apos;temporary password&apos; /var/log/mysqld.log //这种安装方式是有密码的，这个可以查看临时密码，帐户: root</span><br><span class="line">　　　　系统会提示你修改修改密码:ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.</span><br><span class="line">　　　　msyql&gt;SET PASSWORD = PASSWORD(&apos;root&apos;); //设置当前密码为root</span><br><span class="line">　　　　如果修改密码失败:ERROR 1819 (HY000): Your password does not satisfy the current policy requirements</span><br><span class="line">　　　　修改2个全局变量：</span><br><span class="line">　　　　　　mysql&gt; set global validate_password_policy=0; //修改validate_password_policy参数</span><br><span class="line">　　　　　　msyql&gt;  set global validate_password_length=1; //修改密码默认长度</span><br><span class="line">　　　　msyql&gt;GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; IDENTIFIED BY &apos;my password&apos; WITH GRANT OPTION; //授权远程登录</span><br><span class="line">　　　　mysl&gt;FLUSH  PRIVILEGES; //刷新系统配置</span><br><span class="line">　　　　设置数据库和服务器编码格式:</span><br><span class="line">　　　　　　在 /etc/my.cnf 的mysqld 标签下加入</span><br><span class="line">　　　　　　# systemctl restart mysqld.service //重启</span><br><span class="line">　　　　　　登录进mysql:</span><br><span class="line">　　　　　　　　mysql&gt; show variables like &apos;%character%&apos;; //查看编码格式</span><br><span class="line">　　　　　　　　mysql&gt; status; //查看基本信息</span><br></pre></td></tr></table></figure></div>
+<h2 id="四，安装php-7"><a href="#四，安装php-7" class="headerlink" title="四，安装php 7"></a>四，安装php 7</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">　　　　# yum -y install epel-release  //安装epel仓库</span><br><span class="line">　　　　# rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm //更新yum包</span><br><span class="line"></span><br><span class="line">　　　　# 基础</span><br><span class="line">　　　　yum install php71w -y</span><br><span class="line">　　　　# nginx连接使用</span><br><span class="line">　　　　yum install php71w-fpm -y</span><br><span class="line">　　　　# 宽字节</span><br><span class="line">　　　　yum install php71w-mbstring -y</span><br><span class="line">　　　　 # mysql相关</span><br><span class="line">　　　　 yum install php71w-mysqlnd -y</span><br><span class="line">　　　　 # redis扩展</span><br><span class="line">　　　　yum install php71w-pecl-redis -y</span><br><span class="line">　　　　 # 加密使用</span><br><span class="line">　　　　yum install php71w-mcrypt -y</span><br><span class="line">　　　　# 性能加速php5.5 以上使用</span><br><span class="line">　　　　yum install php71w-opcache -y</span><br></pre></td></tr></table></figure></div>
+<h2 id="五，安装vsftpd"><a href="#五，安装vsftpd" class="headerlink" title="五，安装vsftpd"></a>五，安装vsftpd</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">　　　　（这个配置有些烦，先点明目标：指定用户指定目录！）</span><br><span class="line">　　　　# yum install</span><br><span class="line">　　　　# systemctl enable vsftpd.service //开机启动</span><br><span class="line">　　　　# firewall-cmd --zone=public --add-port=21/tcp --permanent //开启21端口</span><br><span class="line">　　　　# systemctl restart firewalld.service //重启防火墙</span><br><span class="line">　　　　# vim /etc/vsftpd/vsftpd.conf //配置vsftpd.conf文件</span><br><span class="line">　　　　　　#禁匿名登录</span><br><span class="line">　　　　　　anonymous_enable=NO</span><br><span class="line">　　　　　　#注释（禁止匿名上传)</span><br><span class="line">　　　　　　#anon_upload_enable=YES</span><br><span class="line">　　　　　　#注释（禁止匿名修改)</span><br><span class="line">　　　　　　</span><br><span class="line">　　　　　　#anon_mkdir_write_enable=YES</span><br><span class="line">　　　　　　chroot_local_user=NO //名单外的帐户禁访问主目录上级目录</span><br><span class="line">　　　　　　chroot_list_enable=YES # 启用名单</span><br><span class="line">　　　　　　chroot_list_file=/etc/vsftpd/chroot_list  #禁止访问上级目录名单</span><br><span class="line">　　　　　　vim /etc/vsftpd/chroot_list //新建 chroot_list名单</span><br><span class="line">　　　　　　　　wuChuHeng #写入名单　　</span><br><span class="line">　　　　</span><br><span class="line">　　　　　　</span><br><span class="line">　　　　　　allow_writeable_chroot=YES //加入这行,在外部并执行 chmod a-w /home/user/ 写上帐号主目录</span><br><span class="line">　　　　　　tcp_wrappers=YES //被动模式，真实原理不清，实测这样访问速度更快</span><br><span class="line">pasv_enable=YES</span><br><span class="line">　　　　　　pasv_min_port=30000</span><br><span class="line">pasv_max_port=30999</span><br><span class="line"> 　　　　 # firewall-cmd --zone=public --add-port=30000-30999/tcp --permanent //开启端口</span><br><span class="line">　　　　　# firewall-cmd --reload</span><br><span class="line">　　　　　# systemctl restart vsftpd.service //重启</span><br><span class="line">　　　　# useradd wuChuHeng -s /sbin/nologin //添加只能登录ftp服务的用户</span><br><span class="line">　　　　# passwd wuChuHeng //修改密码</span><br><span class="line">　　　(配置到当前已经可以使用帐号密码21端口登录在用户主目录了，如果想访问主目录上级，就将帐号一行一个加入chroot_list文件中)　</span><br><span class="line">　　　　# useradd -d /www/web/ -g ftp -s /sbin/nologin flash 指定目录指定用户</span><br><span class="line">　　　　#passwd falsh</span><br><span class="line">　　　　并将flash加入chroot_list,就可以限制在它的主目录中了。</span><br><span class="line">　　　　总结:最终实现的结果是，加入chroot_lis 名单，可以指定用户主目录，并限制在目录中，不在chroot_list名单中则没有这限制。</span><br></pre></td></tr></table></figure></div>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/pay/wechatpay.png" alt="吴楚衡 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/pay/alipay.png" alt="吴楚衡 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php/" rel="tag"># php</a>
+          
+            <a href="/tags/mySQL/" rel="tag"># mySQL</a>
+          
+            <a href="/tags/aparche/" rel="tag"># aparche</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/13/jQ学习笔记-ajax/" rel="next" title="「前端」jQ学习笔记-ajax">
+                <i class="fa fa-chevron-left"></i> 「前端」jQ学习笔记-ajax
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/16/【mySQL】mysql笔记-mysql函数运用/" rel="prev" title="「mySQL」mysql笔记-mysql函数运用">
+                「mySQL」mysql笔记-mysql函数运用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/favicon.ico" alt="吴楚衡">
+            
+              <p class="site-author-name" itemprop="name">吴楚衡</p>
+              <p class="site-description motion-element" itemprop="description">IT菜鸟,写这个博客是防止未来把自己学习的东西给忘记了,也是为了自己学习的那点东西做下总结加深下印象,请多指教^_^!</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">101</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">76</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3d1Y2h1aGVuZw==" title="GitHub &rarr; https://github.com/wuchuheng"><i class="fa fa-fw fa-github"></i>GitHub</span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="bWFpbHRvOmFkbWluQHd1Y2h1aGVuZy5jb20=" title="E-Mail &rarr; mailto:admin@wuchuheng.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3poLWNuL2RvY3MvaW5kZXguaHRtbA==" title="https://hexo.io/zh-cn/docs/index.html">hexo文档</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL3RoZW1lLW5leHQuaWlzc25hbi5jb20=" title="http://theme-next.iissnan.com">主题文档</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL3d3dy5saW51eGV5ZS5jb20=" title="http://www.linuxeye.com">linux学习平台</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS9ib29rL3poL3Yy" title="https://git-scm.com/book/zh/v2">git使用手册</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9oaWdobGlnaHRqcy5vcmc=" title="https://highlightjs.org">highlightjs</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9odWIuZG9ja2VyLmNvbS91L3d1Y2h1aGVuZy8=" title="https://hub.docker.com/u/wuchuheng/">docker</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL3hpYW9oYW55dS5tZQ==" title="http://xiaohanyu.me">cnlox</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL3hpYW9oYW55dS5tZQ==" title="http://xiaohanyu.me">vim从入门到精通</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9jaWtlYmxvZy5jb20v" title="https://cikeblog.com/">刺客博客</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9oeWRpbmdzeS5naXRodWIuaW8v" title="https://hydingsy.github.io/">算法牛人</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL3hhcmdpbi5jb20vcmVhZGluZ3Mv" title="http://xargin.com/readings/">牛人</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9lYm9va2ZvdW5kYXRpb24uZ2l0aHViLmlvL2ZyZWUtcHJvZ3JhbW1pbmctYm9va3Mv" title="https://ebookfoundation.github.io/free-programming-books/">githhub开源书</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9sYWlqdy5jb20v" title="https://laijw.com/">赖经纬</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly93dzRrLmNvbS8=" title="https://ww4k.com/">徐庆业</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9oYXNhaWsuY29tLw==" title="https://hasaik.com/">next主题参考</span>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-安装前准备"><span class="nav-text">一,安装前准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-安装apache"><span class="nav-text">二,安装apache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-安装mysql"><span class="nav-text">三,安装mysql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四，安装php-7"><span class="nav-text">四，安装php 7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五，安装vsftpd"><span class="nav-text">五，安装vsftpd</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <span class="exturl" data-url="aHR0cDovL3d3dy5taWl0YmVpYW4uZ292LmNu">粤ICP备17071471号 </span>&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">吴楚衡</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Mist</span> v6.7.0</div>
+
+
+
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+    <script>
+        if (window.mermaid) {
+            mermaid.initialize("");
+        }
+  </script>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'vUPCRqeu7bXvUdFGGLuT3zvs-gzGzoHsz',
+    appKey: 'cooQBOkOaV3XE3SP4ihtaWOe',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script src="/js/src/exturl.js?v=6.7.0"></script>
+
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>
