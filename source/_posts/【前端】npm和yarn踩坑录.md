@@ -34,5 +34,6 @@ $ npm config delete https-proxy
 
 ``` bash
 $ npm config set registry https://registry.npm.taobao.org
+$ # 官方源
+$ npm config delete registry
 ```
-
