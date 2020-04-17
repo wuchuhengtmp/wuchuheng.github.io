@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「linux」git学习笔记-搭建仓库
+title: 【linux】git学习笔记-搭建仓库
 categories: linux
 tags: git笔记
 toc: true

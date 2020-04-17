@@ -1,5 +1,5 @@
 layout: layout
-title: 「vim」vim学习笔记一 基本常识
+title: 【vim】vim学习笔记一 基本常识
 category: vim
 tags: vim
 toc: true

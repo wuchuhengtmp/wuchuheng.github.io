@@ -1,5 +1,5 @@
 layout: layout
-title: 「linux」ssh笔记-ssh终端使用入门和配置
+title: 【linux】ssh笔记-ssh终端使用入门和配置
 author: 吴楚衡
 keywords:
   - ssh入门

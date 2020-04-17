@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「vim」vim学习笔记-多重复制插件
+title: 【vim】vim学习笔记-多重复制插件
 tags:
   - vim
 categories:

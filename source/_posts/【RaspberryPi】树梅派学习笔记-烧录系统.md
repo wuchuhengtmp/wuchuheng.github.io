@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「RaspberryPi」树梅派学习笔记-烧录系统
+title: 【RaspberryPi】树梅派学习笔记-烧录系统
 tags:
   - RaspberryPi
 catogery: RasberryPi

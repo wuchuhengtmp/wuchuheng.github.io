@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「php」TP5.0学习笔记-配置
+title: 【php】TP5.0学习笔记-配置
 date: 2018-06-11 16:24:32
 tags: TP5.0
 category: php

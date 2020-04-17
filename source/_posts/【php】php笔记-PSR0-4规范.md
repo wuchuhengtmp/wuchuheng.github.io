@@ -1,5 +1,5 @@
 layout: layout
-title: '「php」php笔记-PSR[0-4]规范(转载)'
+title: '【php】php笔记-PSR[0-4]规范(转载)'
 categories:
   - php
 keywords:

@@ -1,5 +1,5 @@
 layout: layut
-title: 「nginx」nginx笔记-入手准备
+title: 【nginx】nginx笔记-入手准备
 keywords:
   - nginx
   - nginx入门

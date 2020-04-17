@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「linux」构思手稿- 去中心化shell翻译工具trans
+title: 【linux】构思手稿- 去中心化shell翻译工具trans
 author: 吴楚衡
 tags:
   - 设计手稿

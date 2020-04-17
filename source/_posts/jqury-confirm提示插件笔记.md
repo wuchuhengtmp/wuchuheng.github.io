@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「前端」jqury-confirm提示插件笔记
+title: 【前端】jqury-confirm提示插件笔记
 categories: 前端
 tags: javascript
 toc: true

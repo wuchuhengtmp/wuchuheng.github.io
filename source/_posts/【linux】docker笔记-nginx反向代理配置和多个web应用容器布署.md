@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「linux」docker笔记-nginx反向代理配置和多个web应用
+title: 【linux】docker笔记-nginx反向代理配置和多个web应用
 date: 2018-11-11 06:48:13
 keywords: 
   - docker

@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「php」php数据验证类
+title: 【php】php数据验证类
 date: 2018-05-23 17:02:34
 category: php
 tags: php算法

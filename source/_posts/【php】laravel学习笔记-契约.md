@@ -2,7 +2,7 @@ layout: draft
 title: 【php】laravel学习笔记-契约
 author: 吴楚衡
 tags:
-  - larvel
+  - laravel
   - 契约
 categories:
   - php

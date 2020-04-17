@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「linux」lamp配置
+title: 【linux】lamp配置
 categories: linux
 tags:
   - php

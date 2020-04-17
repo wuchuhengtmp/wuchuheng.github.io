@@ -1,17 +1,16 @@
----
 layout: layout
-title: 「mySQL」mysql笔记-mysql函数运用
-date: 2018-05-16 17:31:38
-keywords: 
-    - mysql
-    - mysql函数
-    - mysql子查询
-    - mysql联表查询
-categories: 
-    - mySQL
-tags: 
-    - mySQL
+title: 【mysql】mysql笔记-mysql函数运用
+keywords:
+  - mysql
+  - mysql函数
+  - mysql子查询
+  - mysql联表查询
+categories:
+  - mysql
+tags:
+  - mysql
 toc: true
+date: 2018-05-16 09:31:00
 ---
 #### 主副表查询
 ```

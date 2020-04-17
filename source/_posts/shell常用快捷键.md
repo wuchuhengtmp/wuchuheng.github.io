@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「linux」shell常用快捷键
+title: 【linux】shell常用快捷键
 categories: linux
 tags: shell
 toc: true

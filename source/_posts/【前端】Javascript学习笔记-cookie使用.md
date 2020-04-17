@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「前端」Javascript学习笔记-cookie使用
+title: 【前端】Javascript学习笔记-cookie使用
 author: 吴楚衡
 tags:
   - javascript

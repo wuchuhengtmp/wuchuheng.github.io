@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「杂谈」manjaro未必坑，站长是傻逼
+title: 【杂谈】manjaro未必坑，站长是傻逼
 author: 吴楚衡
 tags:
   - 杂谈

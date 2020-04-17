@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「linux」manjaro学习笔记-安装manjaro-xfce
+title: 【linux】manjaro学习笔记-安装manjaro-xfce
 author: 吴楚衡
 date: 2018-10-01 09:57:44
 keywords: 

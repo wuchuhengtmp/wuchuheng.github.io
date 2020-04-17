@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「前端」jQ学习笔记-ajax
+title: 【前端】jQ学习笔记-ajax
 date: 2018-05-13 08:56:37
 categories: 前端
 tags: javascript

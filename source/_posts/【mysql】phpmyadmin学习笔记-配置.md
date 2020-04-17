@@ -1,10 +1,11 @@
----
 layout: layout
 title: 【mysql】phpmyadmin学习笔记-配置
-date: 2019-10-03 17:25:30
-categories: MYSQL
-tags: phpmyadmin
+categories:
+  - mysql
+tags:
+  - phpmyadmin
 toc: true
+date: 2019-10-03 09:25:00
 ---
 1 输入主机地址
 --

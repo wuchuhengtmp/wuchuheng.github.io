@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「php」TP5.0学习笔记-全局异常处理接管
+title: 【php】TP5.0学习笔记-全局异常处理接管
 tags: TP5.0
 category: php
 date: 2018-06-11 17:03:48

@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「linux」hexo基于docker上运行,并发表到gitlab
+title: 【linux】hexo基于docker上运行,并发表到gitlab
 keywords:
     - hexo迁移
     - hexo迁机

@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「前端」jQ学习笔记-选择器
+title: 【前端】jQ学习笔记-选择器
 date: 2018-05-10 20:23:30
 categories: 前端
 tags: javascript

@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「Vim」spf13-vim快捷键
+title: 【Vim】spf13-vim快捷键
 date: 2018-05-18 21:25:30
 category: vim
 tags: vim

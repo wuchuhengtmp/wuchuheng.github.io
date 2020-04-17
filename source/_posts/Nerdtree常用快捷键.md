@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: 「linux」Nerdtree常用快捷键
+title: 【linux】Nerdtree常用快捷键
 date: 2018-05-02 20:47:35
 categories: linux
 tags: vim
