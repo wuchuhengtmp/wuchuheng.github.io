@@ -1050,7 +1050,7 @@ vendors:
   # Example:
   # valine: //cdn.jsdelivr.net/npm/valine@1.3.3/dist/Valine.min.js
   # valine: //cdnjs.cloudflare.com/ajax/libs/valine/1.3.3/Valine.min.js
-  valine:
+  valine: /library/static/js/mermaid.min.js
 
 
 # Assets
