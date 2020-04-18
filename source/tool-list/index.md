@@ -59,6 +59,13 @@ putty是一款简单实用终端连接工具，同上一样，就做好这个功
     [【windowns】refus](http://qiniu.wuchuheng.com/rufus-3.3.exe)
 {% endnote %}
 
+#### 1.1.7 Another.Redis.Desktop.Manager redis桌面连接工具
+{% note success  %}
+    Another.Redis.Desktop.Manager redis 桌面连接工具，基于`electron`开发的开源软件
+    [下载网址](https://www.electronjs.org/apps/anotherredisdesktopmanager)
+    [【windowns】Another.Redis.Desktop.Manager](http://qiniu.wuchuheng.com/tools/Another.Redis.Desktop.Manager.1.3.4.exe)
+{% endnote %}
+
 
 #### 1.1.7 端口扫描
 {% note success  %}
