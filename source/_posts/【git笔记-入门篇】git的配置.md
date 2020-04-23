@@ -67,8 +67,26 @@ export LESSCHARSET=utf-8 // 加入~/.bashrc 则每次登录都生效
 $ # cmd环境下：
 set LESSCHARSET=utf-8
 ```
-#### 设置`vim`为默认编辑器
+#### 4 设置`vim`为默认编辑器
 
 ``` bash 
 git config –global core.editor
 ```
+
+### 5 `eol`结束符号的配置问题
+&emsp;`windows`和`uixt`系的换行符号是样的，`linux`和`mac`为`LF`,`windows`则是`CRLF`2种不一样的换行.
+推荐配置以`LF`为主配置为:
+``` bash 
+$ git config --global core.eol lf
+$ git config --global core.autocrlf input
+$ git config --global core.safecrlf true
+```
+
+如是团队开发，为避免不同平台出现不同换行符的情况,可在根目录下配置`.gitattributes`加入:
+
+``` bash 
+# 默认项目下所有php文件的换行符为lf
+*.php eol=lf
+```
+
+
