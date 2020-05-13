@@ -3,8 +3,7 @@
   {% set leancloud_uri = theme.vendors.leancloud %}
 {% endif %}
 <script src="{{ leancloud_uri }}"></script>
-# :xxx 修改为自己静态文件
-#{% set valine_uri = '//unpkg.com/valine/dist/Valine.min.js' %}
+{% set valine_uri = '//unpkg.com/valine/dist/Valine.min.js' %}
 {% set valine_uri = '/library/static/js/mermaid.min.js' %}
 {% if theme.vendors.valine %}
   {% set valine_uri = theme.vendors.valine %}

@@ -68,4 +68,9 @@ export default {
 {% note success %}
 	子组通过事件发布，改变父组件监听的属性，从而触发父组件的事件从而修改父组件的属性
 {% endnote %}
+### 参考资料
+{% note success %}
+[监听子组件事件](https://cn.vuejs.org/v2/guide/components.html)
+{% endnote %}
+
 

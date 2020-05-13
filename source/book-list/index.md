@@ -15,6 +15,7 @@ date: 2019-11-21 23:26:56
 ##### [《nebular》](https://akveo.github.io/nebular/?utm_source=ngx_admin_landing&utm_medium=docs_getting_started) 进度 0%
 
 ##### [《图说设计模式》](https://design-patterns.readthedocs.io/) 进度 1% 优先等级: 最高
+##### [《es6入门教程》](https://es6.runyifeng.com) 进度 10% 优先等级: 最高
 
 
 #### 文学向
@@ -32,3 +33,6 @@ date: 2019-11-21 23:26:56
 ##### 《英语词根词缀与单词的说文解字》进度 29.7%
 ##### 《小韦绿》 进度0%
 ##### 《单挑》 进度0%
+
+
+

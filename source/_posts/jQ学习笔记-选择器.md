@@ -1,12 +1,11 @@
----
 layout: layout
-title: 【前端】jQ学习笔记-选择器
-date: 2018-05-10 20:23:30
+title: 【前端】javascript学习笔记-选择器
 categories: 前端
 tags: javascript
 toc: true
+date: 2018-05-10 20:23:30
 ---
-多节点选中
+##  1【jqeury】多节点选中
 --
 ``` html
 <script src='/libery/static/js/jquery-3.3.1.min.js'></script>
@@ -54,7 +53,7 @@ toc: true
 </script>
 ```
 <!--more-->
-运行结果:  
+### 运行结果:  
 --
 <script src='/library/static/js/jquery-3.3.1.min.js'></script>
 <div class='demo1'>
@@ -99,6 +98,27 @@ toc: true
         $('.result').text(text);
     })
 </script>
+
+## 2. 【原生】javascript选择器
+
+``` html 
+document.querySelector('a') // 选择文档第一个a标签
+document.querySelectorAll('a') // 选择Dom中所有a标签
+
+```
+### 2.2 通过`Element`路径复制`js`路径
+
+
+{% note success %}
+在`Element`面板中鼠标指向要选择的标签右键后选择`copy`中的`js path`，就是了，内容如: 
+`
+document.querySelector("#courseRight > div.course-right-nano.has-scrollbar > div.nano-right-content.nano-content > div.c-panel.video-panel.current > div > p")
+
+{% endnote %}
+
+
+
+
 
 
 

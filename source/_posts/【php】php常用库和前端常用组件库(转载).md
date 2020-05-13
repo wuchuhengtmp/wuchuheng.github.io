@@ -1,9 +1,7 @@
----
 layout: layout
 title: 【php】php常用库和前端常用组件库(转载)
 author: 吴楚衡
-date: 2018-11-28 12:44:38
-keywords: 
+keywords:
   - php库
   - php组件
   - php常用库大全
@@ -12,12 +10,13 @@ keywords:
   - 前端框架组件大全
   - 前端库大全
   - javascript组件大全
-tags: 
+tags:
   - php
   - javascript
-categery: 
+categery:
   - php
   - 前端
+date: 2018-11-28 12:44:38
 ---
 # awesome-php
 收集整理一些常用的PHP类库, 资源以及技巧. 以便在工作中迅速的查找所需...
@@ -747,5 +746,9 @@ categery:
 - [Eden](https://github.com/Openovate/eden) - 一个PHP快速开发类库,它包含很多组件用来自动加载、事件驱动、文档系统、缓存、模板、国际化、数据库、web服务、支付网关、装载和云服务技术。
 - [html-parser](https://github.com/bupt1987/html-parser) - html解析工具
 - [PHPCrawl](http://phpcrawl.cuab.de/) - PHP的爬虫框架
+
+##  二维码
+- [qr-code](https://github.com/endroid/qr-code) - 二维码
+
 
 - [文章来源](https://github.com/yeszao/awesome-php) - 文章来源
