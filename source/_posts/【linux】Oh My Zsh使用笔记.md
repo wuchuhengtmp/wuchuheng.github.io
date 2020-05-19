@@ -5,7 +5,7 @@ tags:
   - shell
 date: 2018-05-22 21:28:46
 ---
-### 本地环境参数 
+## 本地环境参数 
 
 | 参数 | 说明 | 
 |:--- | :---|
@@ -14,7 +14,7 @@ date: 2018-05-22 21:28:46
 | `线上机OS`| `centos7.6`|
 
 
-### 线上环境参数 
+## 线上环境参数 
 
 | 参数 | 说明 | 
 |:--- | :---|
@@ -48,8 +48,8 @@ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install
 ### 2.2 插件
 
 #### 2.2.1 安装命令自动提示插件
-	下载`git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-`插件下来后，在`~/.zshrc` 的`plugins加入`zsh-autosuggestions`:
+下载`git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
+插件下来后，在`~/.zshrc` 的`plugins加入`zsh-autosuggestions`:
 ``` BASH
 plugins=(git ....... zsh-autosuggestions)
 ```

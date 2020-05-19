@@ -8,6 +8,7 @@ date: 2020-03-30 07:33:52
 国产数据库软件
 [【mac】navicat](http://qiniu.wuchuheng.com/Navicat_Premium_15.0.12_macwk.com.dmg)
 [【windows】navicat](http://qiniu.wuchuheng.com/navicat%E4%B8%AD%E6%96%87%E7%89%88%E7%A0%B4%E8%A7%A3.zip)
+[【sequelpro】](https://www.sequelpro.com)
 {% endnote %}
 
 #### 1.1.2 粘贴板
@@ -94,3 +95,10 @@ putty是一款简单实用终端连接工具，同上一样，就做好这个功
     [【windowns】HDDLLFsetup](http://qiniu.wuchuheng.com/HDDLLFsetup.4.40.exe)
 {% endnote %}
 
+#### 1.2.0 编辑器
+
+{% note warning  %}
+    [延长到2089年的工具](http://qiniu.wuchuheng.com/ide/jetbrains-agent.jar)
+    [webstorm](http://qiniu.wuchuheng.com/images/WebStorm-2020.1.1.dmg)
+    [phpstorm](http://qiniu.wuchuheng.com/images/PhpStorm-2020.1.1.dmg)
+{% endnote %}
