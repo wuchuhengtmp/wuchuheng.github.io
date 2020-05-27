@@ -20,7 +20,7 @@ date: 2020-05-19 06:49:00
 ### 2 配置`bash`环境代理
 &emsp; `v2rayv`安装好后并配置好要使用的代理服务器后，启动并在点击启动图标，下面有个选项，让你复制代理代码,默认是:
 ``` bash 
-$ export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;
+$ export http_proxy=http://127.0.0.1:1087/;export https_proxy=http://127.0.0.1:1087/;
 ```
 运行后当前`bash`环境下的`http`请求会经过代理来处理.
 #### 2.2 `ssh` 连接代理
@@ -50,12 +50,12 @@ $sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install
 ##### 4.1.1 默认代理
 安装完后，系统会默认安装好`zsh`,想要之前的代理默认生效需要在`～/.zshrc`加入:
 ``` bash 
-export http_proxy=http://127.0.0.1:1087;
-export https_proxy=http://127.0.0.1:1087;
+export http_proxy=http://127.0.0.1:1087/;
+export https_proxy=http://127.0.0.1:1087/;
 ```
 也可以定义命名别名来实现启动和关闭,在`~/.zshrc`加入
 ``` bash
-alias setproxy="export https_proxy=http://127.0.0.1:1087;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5://127.0.0.1:1087;echo \"Set proxy successfully\" "
+alias setproxy="export https_proxy=http://127.0.0.1:1087/;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5://127.0.0.1:1087/;echo \"Set proxy successfully\" "
 alias unsetproxy="unset http_proxy;unset https_proxy;unset all_proxy;echo \"Unset proxy successfully\" " 
 alias ipcn="curl myip.ipip.net"
 alias ip="curl ip.sb"
@@ -85,3 +85,9 @@ $ brew cask install font-hack-nerd-font
 ```
 安装好后，在`item2`选择字体为`hack nerd font mono`就行了
 注: [字体来源](https://github.com/ryanoasis/nerd-fonts)
+
+### 7 安装`nvm`
+
+``` bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+```
