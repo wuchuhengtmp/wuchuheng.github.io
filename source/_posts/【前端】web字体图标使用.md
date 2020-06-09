@@ -49,3 +49,9 @@ date: 2020-05-30 09:27:00
 
 ### 3.2 在`vue`中使用
 ![](http://qiniu.wuchuheng.com/images/WX20200531-024422.png)
+
+### 4 谷歌字体API
+
+``` html
+https://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans
+```
