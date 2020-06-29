@@ -13,6 +13,7 @@ date: 2019-11-21 23:26:56
 ##### 《代码简洁之道》 进度1%
 ##### [《ngx-admin》](https://akveo.github.io/ngx-admin/docs/getting-started/what-is-ngxadmin#what-is-ngxadmin)  进度0%
 ##### [《nebular》](https://akveo.github.io/nebular/?utm_source=ngx_admin_landing&utm_medium=docs_getting_started) 进度 0%
+##### [《 PHP The Right Way》](https://laravel-china.github.io/php-the-right-way/) 进度 30%
 
 ##### [《图说设计模式》](https://design-patterns.readthedocs.io/) 进度 1% 优先等级: 最高
 ##### [《es6入门教程》](https://es6.runyifeng.com) 进度 10% 优先等级: 最高
