@@ -102,3 +102,9 @@ putty是一款简单实用终端连接工具，同上一样，就做好这个功
     [webstorm](http://qiniu.wuchuheng.com/images/WebStorm-2020.1.1.dmg)
     [phpstorm](http://qiniu.wuchuheng.com/images/PhpStorm-2020.1.1.dmg)
 {% endnote %}
+
+#### 1.2.1 上网辅助工具
+{% note primary %}
+[【mac】ShadowsocksX-NG-R8](https://qiniu.wuchuheng.com/tools/ShadowsocksX-NG-R8.dmg)
+{% endnote %}
+
