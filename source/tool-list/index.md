@@ -108,3 +108,8 @@ putty是一款简单实用终端连接工具，同上一样，就做好这个功
 [【mac】ShadowsocksX-NG-R8](https://qiniu.wuchuheng.com/tools/ShadowsocksX-NG-R8.dmg)
 {% endnote %}
 
+#### 1.2.1 安卓usb共享到mac上网驱动
+{% note primary %}
+[【mac】HoRNDIS](https://qiniu.wuchuheng.com/tools/HoRNDIS-rel7.pkg)
+{% endnote %}
+
