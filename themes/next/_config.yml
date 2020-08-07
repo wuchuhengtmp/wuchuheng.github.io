@@ -144,6 +144,7 @@ menu:
   历史: /history/ || history
   书单: /book-list/index.html || book
   工具: /tool-list/index.html || book
+  开源: /open-source/index.html || book
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
