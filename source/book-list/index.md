@@ -3,7 +3,7 @@ date: 2019-11-21 23:26:56
 ---
 #### 技术向
 
-##### [《angular官方文档》](https://angular.io/start) 进度1%
+##### [《angular官方文档》](https://angular.io/start) 进度65%
 ##### [《笨方法学习vim》](http://learnvimscriptthehardway.stevelosh.com/) 进度100% （注：没读透）
 ##### 《vim实用技巧（第2版）》进度100%  (注：没读透)
 ##### [《vim 入门到精通》](https://github.com/mhinz/vim-galore#readme) 进度100% （注：没读透）
