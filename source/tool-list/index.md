@@ -113,3 +113,7 @@ putty是一款简单实用终端连接工具，同上一样，就做好这个功
 [【mac】HoRNDIS](https://qiniu.wuchuheng.com/tools/HoRNDIS-rel7.pkg)
 {% endnote %}
 
+#### 1.2.2 播放器
+{% note info %}
+    [【mac】 elmediplayer](http://qiniu.wuchuheng.com/tools/elmediaplayer.dmg)
+{% endnote %}
