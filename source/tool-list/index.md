@@ -133,3 +133,24 @@ putty是一款简单实用终端连接工具，同上一样，就做好这个功
   [【mac】contexts](https://qiniu.wuchuheng.com/tools/Contexts-3.7.1.dmg)
   [官网](https://contexts.co/)  
 {% endnote %}
+
+#### mac屏幕操作软件
+{% note danger  %}
+  使用spaceLaucher可以让用户自定义快捷键来激动应用。  
+  [【mac】SpaceLauncher](https://qiniu.wuchuheng.com/tools/SpaceLauncher.zip)  
+  [官网](https://spacelauncherapp.com/)  
+  magnet可以在已经激活的窗口（焦点）进行窗口大小的控制  
+  [官网](https://magnet.crowdcafe.com/)  
+  [【mac】magenet](https://qiniu.wuchuheng.com/tools/Magnet%20Pro_2.4.5.dmg)  
+  contexts是一个可以通过快捷键快速切换应用的软件，它主页互补上面的`spaceLaucher` 不能切换同一个应用多个窗口精确激活的情况。
+  [【mac】contexts](https://qiniu.wuchuheng.com/tools/Contexts-3.7.1.dmg)
+  [官网](https://contexts.co/)  
+{% endnote %}
+
+#### 键盘快捷键映射
+{% note warning %}
+  一个能解决指定输入的快捷键映射解决方案
+  [【mac 】 karabiner](https://qiniu.wuchuheng.com/tools/Karabiner-Elements-12.10.0.dmg)
+  [官网](https://karabiner-elements.pqrs.org/)
+{% endnote %}
+

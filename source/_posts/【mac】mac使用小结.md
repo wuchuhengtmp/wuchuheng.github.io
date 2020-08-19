@@ -91,3 +91,16 @@ $ brew cask install font-hack-nerd-font
 ``` bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
 ```
+
+### 8 指定输入法快捷键绑定
+
+&emsp; 就为了解决一个问题--输入切换这种反人类的方式。通过输入法切换是遍历性多状态的，哪怕快捷键也要从至少2种输入法中通过快捷键来找，至少要2步才能完成输入法的切换，1按快捷键controller + space ; 2 要看看是不是你要的输入法才能，那有没有一种快捷键就对应一种输入法？
+
+* 下载 [karabiner-elements](https://qiniu.wuchuheng.com/tools/Karabiner-Elements-12.10.0.dmg) 并安装并打开
+
+* [导入配置文件](karabiner://karabiner/assets/complex_modifications/import?url=https%3A%2F%2Fke-complex-modifications.pqrs.org%2Fjson%2Fswitch_en_cn_ja_katakana.json)
+*   `option` + 1 为英文 `option` + 2为中文，就这样
+* 可以自己定义配置，也可以采用他人的[配置](https://ke-complex-modifications.pqrs.org/)
+
+小结： 做了这么多就是为了解决一个输入法切换确定的问题，想要哪个就哪个，而不是等系统下个列表慢慢选，被动。
+
