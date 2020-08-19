@@ -16,7 +16,9 @@ date: 2020-03-30 07:33:52
 {% note success %}
 clipx是一简单实用粘贴板工具。没有花销的功能，单纯做好一款粘贴板工具
 [官方网址](https://bluemars.org/clipx/)
-[【windowns】clipx](http://qiniu.wuchuheng.com/clipx.exe)
+[【windowns】clipx](http://qiniu.wuchuheng.com/clipx.exe)  
+[【mac】也是粘贴板](https://qiniu.wuchuheng.com/tools/1Clipboard.dmg)  
+[官网](http://1clipboard.io/)
 {% endnote %}
 
 #### 1.1.3 ssh终端工具putty
