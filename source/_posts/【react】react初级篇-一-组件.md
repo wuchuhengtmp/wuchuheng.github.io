@@ -248,9 +248,131 @@ export default class Test2 extends React.Component<testProps, any> { // <--- 指
 ```
 
 ### 4 组件的`state`
-&emsp; 关于	
+{% note warning %}
+	注： 关于组件的`state`请参考[《组件的state》](https://reactjs.org/docs/state-and-lifecycle.html)
+{% endnote %}
+&emsp;以类组件来说明，`state`可以看作是类下的公开属性，而如果直接修改这个属性也是可以直接反馈到模板上的。而其它的公开属性（不一定要state）也是可以绑定到模板上的。一样的。不一定非要通过`setState()`方法，但还是建议通过`setState()`来写，官方嘛。
 
-&emsp;以类组件来说明，`state`其实就是
+
+### 5 组件的事件
+&emsp;官方文档这个事件的绑定还是很奇怪的-写法很奇怪。奇怪在于绑定，要做到3步: 1写个事件处理方法（正常操作），2`Dom`显示绑定（正常），3，还要在初始化的地方再进行绑定一次（很怪）。虽然实验性写法给出了不用第3步的写法，但也是有怪怪的。  
+传个参数也是怪怪的，相对于`angular` 和`vue`还是很怪。  
+{% note success %}
+	[《组件事件》](https://reactjs.org/docs/conditional-rendering.html)
+{% endnote %}
+
+### 6 条件渲染和列表
+
+&emsp; 条件渲染官方文档能给出的最多是三元的方式，而条件判断也有更多`else if`要判断，只能在组件内部进行再定义个组件（方法或函数），而`else if`这种`DOM`无法写的逻辑则在内部进行写好后再进行返回;
+
+#### 6.1 条件渲染
+``` typescript
+...
+public renderCondition(): any
+  {
+    if (this.state.coNumber === 1) {
+      return (<p>11</p>);
+    } else if (this.state.coNumber === 2) {
+      return (<p>22</p>);
+    } else {
+      return (<p>33</p>);
+    }
+  }
+
+  public render(): React.ReactNode
+  {
+    return (<React.Fragment>
+      {this.renderCondition()}
+    </React.Fragment>)
+  }
+```
+
+#### 6.2 列表渲染
+
+``` typescript
+...
+
+  public renderCondition(): any
+  {
+    const numbers = [1, 2, 3, 4, 5];
+    const listItems = numbers.map((number, index) =>
+        <li key={number + index}>
+          {number}
+        </li>
+    );
+    return listItems;
+  }
+
+  public render(): React.ReactNode {
+
+    return (<React.Fragment>
+      {this.renderCondition()}
+    </React.Fragment>)
+  }
+```
+
+组件的渲染很纯粹-就展示数据参与逻辑处理很少。
+
+### 7 表单
+&emsp; 表单官的用法官方文档写的很明白，这里补充下`typescript` 的类型示例a
+
+``` typescript
+
+import React from 'react'
+
+interface testProps {
+  timeString?: string,
+  test? : number
+}
+
+interface testState {
+  text: string,
+  inputValue: string
+}
+
+export default class Test2 extends React.Component<testProps, testState> {
+
+  public state: testState;
+
+  public constructor(props: testProps)
+  {
+    super(props);
+    this.state = {
+      text: '',
+      inputValue: ''
+    };
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  public handleEdit(event: React.ChangeEvent<HTMLTextAreaElement>): void
+  {
+    this.setState({
+      text: event.target.value
+    })
+  }
+
+  public handleInputChange(event: React.ChangeEvent<HTMLInputElement>): void
+  {
+    this.setState({
+      inputValue: event.target.value
+    })
+  }
+
+  public render(): React.ReactNode {
+
+    return (<React.Fragment>
+      <textarea value={this.state.text} onChange={this.handleEdit}/>
+      <input value={this.state.inputValue} onChange={this.handleInputChange}/>
+    </React.Fragment>)
+  }
+}
+```
+
+### 8 组件的状态提升
+&emsp; 状态提升解决了一个问题-子组件向父组件提供数据，其实就子组件有权去触发父组件的方法来实现通讯。其实现方式可以看作一个闭包，在组父组声明子组件回调。如果了解过`view`和`angular`就会发现实现的方式是一样，叫法不一样，一个是组件通讯一个是输出, 相比下`react`的事件传下去后并直接调用的写法更好理解。
+
+
 
 
 
