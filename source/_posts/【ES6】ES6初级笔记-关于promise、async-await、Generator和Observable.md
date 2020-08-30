@@ -172,6 +172,6 @@ class demo {
  注： 参考资料  
  * [mozilla](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Generator/throw)
  * [JavaScript中的Promise、Generate 函数、Async 函数 说明及使用示例](https://blog.csdn.net/qq_17151325/article/details/99825020)  
- * [ES6入门](https://es6.ruanyifeng.com/#docs/async)
+ * [ES6入门mm](https://es6.ruanyifeng.com/#docs/async)
  
  
