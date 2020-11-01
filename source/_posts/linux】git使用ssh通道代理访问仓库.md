@@ -8,7 +8,7 @@ tags:
 <!--more-->
 
 #### 1 https代理设置
-##### 1.1 git客户端配置 
+##### 1.1 git客户端`http`代理配置 
 ``` bash
 git config --global https.proxy https://127.0.0.1:<port>
 git config --global https.proxy http://127.0.0.1:<port>
@@ -18,6 +18,17 @@ git config --global https.proxy http://127.0.0.1:<port>
 git config --global --unset https.proxy
 git config --global --unset http.proxy
 ```
+
+##### 1.2 git客户端`ssh`代理配置 
+&emsp; 修改`~/.ssh/config`
+``` bash
+Host github.com
+HostName github.com
+User git
+ProxyCommand nc -X 5 -x <host>:<port> %h %p
+
+```
+
 ##### 1.2 ssh转发配置
 ``` bash
 ssh -N -D 127.0.0.1:<port> <user>@<romote host>

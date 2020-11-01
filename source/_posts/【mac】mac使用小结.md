@@ -55,14 +55,30 @@ export https_proxy=http://127.0.0.1:1087/;
 ```
 也可以定义命名别名来实现启动和关闭,在`~/.zshrc`加入
 ``` bash
-alias setproxy="export https_proxy=http://127.0.0.1:1087/;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5://127.0.0.1:1087/;echo \"Set proxy successfully\" "
-alias unsetproxy="unset http_proxy;unset https_proxy;unset all_proxy;echo \"Unset proxy successfully\" " 
 alias ipcn="curl myip.ipip.net"
 alias ip="curl ip.sb"
+
+# 设置http https代理
+proxyIp="192.168.1.102:1080"
+function setProxy()
+{
+        export http_proxy=http://${proxyIp} && export https_proxy=http://${proxyIp}
+        git config --global https.proxy http://${proxyIp} && git config --global https.proxy https://${proxyIp}
+        echo "set proxy successfully"
+}
+
+# 解除http https代理
+function unSetProxy()
+{
+        git config --global --unset http.proxy && git config --global --unset https.proxy;
+        unset http_proxy;unset https_proxy;unset all_proxy;
+        echo "Unset proxy successfully";
+}
+
 # 上面这几个 alias 是自定义的命令
-# unsetproxy 取消代理
-# setproxy 设置代理
 # ip & ipcn  查看 IP
+# setProxy 设置代理
+# unSetProxy 解决代理
 ```
 注: 以上的命令行[参考处](https://www.xbug.me/post/60589.html)
 
@@ -103,4 +119,3 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | b
 * 可以自己定义配置，也可以采用他人的[配置](https://ke-complex-modifications.pqrs.org/)
 
 小结： 做了这么多就是为了解决一个输入法切换确定的问题，想要哪个就哪个，而不是等系统下个列表慢慢选，被动。
-

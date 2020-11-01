@@ -112,8 +112,6 @@ callAll().catch(e => {
  
  ### 3 用`Generator`和`yield`来写则可以这样写
  ``` javascript
- 
- 
 class demo {
   generator;
   
@@ -168,10 +166,8 @@ class demo {
  // this is fun1 and the params is params for fun1
  // VM1769:44 Something went rong in fun1
  ```
- 
+ *注： 上面的写法还少了一步若是成功则返回各个步骤的处理结果，由于是在`setTimeout`写的，要返回结果当下也只有返回`Promise` 合适些。
  注： 参考资料  
  * [mozilla](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Generator/throw)
  * [JavaScript中的Promise、Generate 函数、Async 函数 说明及使用示例](https://blog.csdn.net/qq_17151325/article/details/99825020)  
  * [ES6入门mm](https://es6.ruanyifeng.com/#docs/async)
- 
- 

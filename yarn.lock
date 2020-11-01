@@ -2007,6 +2007,11 @@ hexo-cli@^3.1.0:
     resolve "^1.11.0"
     tildify "^2.0.0"
 
+hexo-codepen-v2@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/hexo-codepen-v2/-/hexo-codepen-v2-0.2.3.tgz#1c979c8580fc0bdae2f7fda83fd7dd2669854422"
+  integrity sha512-i59vSuQQBsz4n3AKNOabP+CtbCX2pSRAvfrvEFl/HO+AvroPrAp7qBX+QTTmpOI1mAMM98TisZv7NPG4QiqKKQ==
+
 hexo-deployer-ftpsync@^0.1.1:
   version "0.1.1"
   resolved "https://registry.npm.taobao.org/hexo-deployer-ftpsync/download/hexo-deployer-ftpsync-0.1.1.tgz#b8d1efffc960629b4a8af52536fbd1425ca6f477"

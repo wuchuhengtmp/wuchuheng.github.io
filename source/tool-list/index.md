@@ -16,7 +16,7 @@ date: 2020-03-30 07:33:52
 {% note success %}
 clipx是一简单实用粘贴板工具。没有花销的功能，单纯做好一款粘贴板工具
 [官方网址](https://bluemars.org/clipx/)
-[【windowns】clipx](http://qiniu.wuchuheng.com/clipx.exe)  
+[【windowns】clipx](http://qiniu.wuchuheng.com/clipx1.0.3.9.exe)  
 [【mac】也是粘贴板](https://qiniu.wuchuheng.com/tools/1Clipboard.dmg)  
 [官网](http://1clipboard.io/)
 {% endnote %}
@@ -101,13 +101,32 @@ putty是一款简单实用终端连接工具，同上一样，就做好这个功
 
 {% note warning  %}
     [延长到2089年的工具](http://qiniu.wuchuheng.com/ide/jetbrains-agent.jar)
-    [webstorm](http://qiniu.wuchuheng.com/images/WebStorm-2020.1.1.dmg)
-    [phpstorm](http://qiniu.wuchuheng.com/images/PhpStorm-2020.1.1.dmg)
+    [【mac】webstorm](http://qiniu.wuchuheng.com/images/WebStorm-2020.1.1.dmg)
+    [【mac】phpstorm](http://qiniu.wuchuheng.com/images/PhpStorm-2020.1.1.dmg)
+
+    2020-9-13更新
+    
+    [延长到2089年的工具](http://qiniu.wuchuheng.com/tools/JetBrains%202020.2%20%E7%89%88%E6%9C%AC%20%E5%85%A8%E5%AE%B6%E6%A1%B6%E6%BF%80%E6%B4%BB%E6%96%B9%E5%BC%8F.zip)
+    注： 安装插件的参数在根目录下的一个文件中, 安装成功后，解压后的文件不要删除，保留下来，防止下次重启idea无效的情况
+    [【win】webstorm 2020-1-2](http://qiniu.wuchuheng.com/tools/WebStorm-2020.1.2.exe)
+    [【win】phpstorm 2020-2-1](http://qiniu.wuchuheng.com/tools/PhpStorm-2020.2.1.exe)
+
+
 {% endnote %}
 
 #### 1.2.1 上网辅助工具
 {% note primary %}
 [【mac】ShadowsocksX-NG-R8](https://qiniu.wuchuheng.com/tools/ShadowsocksX-NG-R8.dmg)
+{% endnote %}
+
+{% note success %}
+[【windows】 shadowsocks](https://wuchuheng.com/images/Shadowsocks-4.1.10.0%20.zip)
+{% endnote %}
+
+{% note success %}
+[【windowns】 shadowsocksR](https://qiniu.wuchuheng.com/tools/ShadowsocksR-Portable-Win64-5.1.10.7z)
+https://losadhwselfff2332dasd.xyz/link/TCkL1Y4jJASCXhtT?sub=1
+
 {% endnote %}
 
 #### 1.2.1 安卓usb共享到mac上网驱动
@@ -139,5 +158,13 @@ putty是一款简单实用终端连接工具，同上一样，就做好这个功
   一个能解决指定输入的快捷键映射解决方案
   [【mac 】 karabiner](https://qiniu.wuchuheng.com/tools/Karabiner-Elements-12.10.0.dmg)
   [官网](https://karabiner-elements.pqrs.org/)
+{% endnote %}
+
+### 2 办公类
+
+####  2.1 解压
+
+{% note success %}
+[【windowns】7z](https://qiniu.wuchuheng.com/tools/7z1900-x64.exe)
 {% endnote %}
 
