@@ -7,7 +7,7 @@ categories:
   - 前端
 date: 2020-05-13 08:14:00
 ---
-<img src="http://qiniu.wuchuheng.com/images/dcd5e077cf9f54ebe52d4f7ebe8c3080.png" class="full-image" />
+<div align='center'>![](http://qiniu.wuchuheng.com/images/dcd5e077cf9f54ebe52d4f7ebe8c3080.png)
 
 ## 1 什么是webpack?
 &emsp;`webpack`是一个模块打包工具，把更多的文件合并为更少的文件，从而使`web`发出更少的请求，加载不冗余的文件（通常是打包后的静态文件），这样打开网页就比以前要加载一大堆文件相比就快很多了。从打包处理的结果来看是这样的，那从开发者的角度来看，`webpack`又带来什么好处？  

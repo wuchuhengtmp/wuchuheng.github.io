@@ -7,7 +7,7 @@ categories:
   - docker
 date: 2020-09-01 09:40:35
 ---
-![](https://qiniu.wuchuheng.com/images/docker_lnmp.png)
+<div align=center>![](https://qiniu.wuchuheng.com/images/docker_lnmp.png)
 &emsp;`lnmp`或`lamp`是个非常了不起了的解决方案，以前，在这个方案净来之前，做个网站的成本太高了。后台出现了`lamp`即免费的`linux` + 免费的`apach` + 免费的`mysql` + 免费简单的`php`的免费解决方案。在不输给其它的收费解方案时，使用方面也不差。这就大大降低建站的成本了。这一方案也极大促进互联网的发展。  
 &emsp;而`docker`是个非常好迁移方案。以前要保证据完整迁移性，最保险的是做镜像备份，然后在到新的机器上恢复，真的很繁琐很麻烦很不人性化。而备份镜像有大量的数据是环境之类的为保证软件的运行用的，只有一小部分才是这个软件的本身。而`docker`的迁移就是迁移这个小部分的软件，而这个软件依赖的系统和环境则是通过配置文件，要么构建出来要么下载已经可以用的镜像，来保证这个软件能稳定运行起来。整个过程可以是自动流程化。  
 &emsp; 而基于`docker`的`php`环境，用来测试开发是再好不过了。
@@ -805,4 +805,3 @@ $ git commit -m "【php】2.5.1 配置动态网站"
 ### 参考资料
 * [Docker PHP5.3~7.2镜像分享](https://www.jianshu.com/p/8b585c859cde)
 * [dnmp](https://github.com/yeszao/dnmp)
-
