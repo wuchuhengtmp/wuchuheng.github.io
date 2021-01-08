@@ -47,8 +47,11 @@ putty是一款简单实用终端连接工具，同上一样，就做好这个功
 {% note default %}
     ip路由地图测试工具，用于测试当前ip数据包到目标ip的传送路线。
     [官方网址](https://tools.ipip.net/convert.php)
-    [【windowns】bestTrace](http://qiniu.wuchuheng.com/MTracer.zip)
+    [【windowns】bestTrace](http://qiniu.wuchuheng.com/besttrace.exe)
 {% endnote %}
+
+
+
 
 #### 1.1.6 镜像写入工具
 {% note info %}
@@ -89,6 +92,7 @@ putty是一款简单实用终端连接工具，同上一样，就做好这个功
     `http`抓包工具`fiddler`
     [【windowns】fiddler](http://qiniu.wuchuheng.com/fiddler5.zip)
 {% endnote %}
+
 
 #### 1.1.9 磁盘重置化工具
 
@@ -139,6 +143,10 @@ https://losadhwselfff2332dasd.xyz/link/TCkL1Y4jJASCXhtT?sub=1
     [【mac】 elmediplayer](http://qiniu.wuchuheng.com/tools/elmediaplayer.dmg)
 {% endnote %}
 
+#### 1.2.3 正则测试工具
+{% note info %}
+    [【windowns】MTracer](http://qiniu.wuchuheng.com/MTracer.zip)
+{% endnote %}
 
 #### mac屏幕操作软件
 {% note danger  %}
@@ -159,6 +167,7 @@ https://losadhwselfff2332dasd.xyz/link/TCkL1Y4jJASCXhtT?sub=1
   [【mac 】 karabiner](https://qiniu.wuchuheng.com/tools/Karabiner-Elements-12.10.0.dmg)
   [官网](https://karabiner-elements.pqrs.org/)
 {% endnote %}
+
 
 ### 2 办公类
 
