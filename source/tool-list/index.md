@@ -86,6 +86,8 @@ putty是一款简单实用终端连接工具，同上一样，就做好这个功
     `Wireshark`抓包一哥，没有什么数据包搞不定的，`udp,tcp/ip`协议簇下的协议都搞,不仅本地搞,还能远程在服务器上搞。
     [官方网址](https://www.solarwinds.com/)
     [【windowns】wireshark](http://qiniu.wuchuheng.com/Wireshark-win64-3.0.6.exe)
+    proxymac http的抓包工具 [官网](https://proxyman.io/)
+    [【mac】proxyman]https://qiniu.wuchuheng.com/tools/Proxyman_2.16.1.dmg()
 {% endnote %}
 
 {% note warning  %}
@@ -169,6 +171,23 @@ https://losadhwselfff2332dasd.xyz/link/TCkL1Y4jJASCXhtT?sub=1
 {% endnote %}
 
 
+#### 代理中转工具
+{% note info %}
+      可以配置本地下哪些应用要走代理哪些不用
+    [官方网址](https://www.proxifier.com/)
+    [【mac】proxifier](https://qiniu.wuchuheng.com/tools/ProxifierMac.dmg)
+{% endnote %}
+
+####  安卓串口转网络连接
+{% note warning  %}
+	可以通过网络的形式访问安卓，从而省掉数据线连接开发的开发，同一网络大家共用一个机子开发，通过网络就可以查看设备，方便
+	[【mac】proxifier](https://qiniu.wuchuheng.com/tools/QtScrcpy-mac-x64-v1.4.1.dmg)
+{% endnote %}
+
+
+
+
+
 ### 2 办公类
 
 ####  2.1 解压
@@ -176,4 +195,7 @@ https://losadhwselfff2332dasd.xyz/link/TCkL1Y4jJASCXhtT?sub=1
 {% note success %}
 [【windowns】7z](https://qiniu.wuchuheng.com/tools/7z1900-x64.exe)
 {% endnote %}
+
+
+
 
