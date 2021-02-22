@@ -7,7 +7,7 @@ categories:
   - 前端
 date: 2021-02-22 03:31:00
 ---
-![](https://qiniu.wuchuheng.com/image/npm.png)
+<div align=center>![](https://qiniu.wuchuheng.com/image/npm.png)
 
 ## 准备工作
 * 一个`npm`账号，用来后面发布包用的，以及账号关联的邮件要认证通过，不然，包是不给发布上去的。这是[官网](https://www.npmjs.com/)
