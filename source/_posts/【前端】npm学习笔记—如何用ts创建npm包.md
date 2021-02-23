@@ -7,7 +7,7 @@ categories:
   - 前端
 date: 2021-02-22 03:31:00
 ---
-<div align=center>![](https://qiniu.wuchuheng.com/image/npm.png)
+<div align=center>![](https://qiniu.wuchuheng.com/image/npm.png)</div>
 
 ## 准备工作
 * 一个`npm`账号，用来后面发布包用的，以及账号关联的邮件要认证通过，不然，包是不给发布上去的。这是[官网](https://www.npmjs.com/)
@@ -253,9 +253,13 @@ hello! hello!!!
   ]
 }
 ```
+#### 1.2.8 本地开发
+&emsp;在包中运行`npm run build -w`，然后源一修改就是构建到`dist`目录中。   
+&emsp;在本地测试，如一个项目中直接使用这个包，可以使用本地链接的方式把正在编辑的包引入进来，在别的项目中执行`npm link <包的目录位置>`。  
+&emsp;这样就做到了包一更改，就构建生成，然后直接使用。确定没问题再发布出去。很适合开发下流程。
 
 
-#### 1.2.8 做下收尾
+#### 1.2.9 做下收尾
 &emsp;到了这里，一个能用包就已经发布并能使用了，但在发布的包也包含有一些没有必要包含进行的文件，如:
 ``` bash 
     echo "idea" > .npmignore # 发布时候不包含idea目录 一般只保留dist目录和配置文件，其它可以不包含在发布中，减小包的大小
