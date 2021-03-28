@@ -7,7 +7,7 @@ categories:
   - 前端
 date: 2021-02-22 03:31:00
 ---
-<div align=center>![](https://qiniu.wuchuheng.com/image/npm.png)</div>
+<div align=center>![](https://qiniu.wuchuheng.com/image/npm.jpg)</div>
 
 ## 准备工作
 * 一个`npm`账号，用来后面发布包用的，以及账号关联的邮件要认证通过，不然，包是不给发布上去的。这是[官网](https://www.npmjs.com/)
@@ -253,16 +253,29 @@ hello! hello!!!
   ]
 }
 ```
+{% note warning %} 
+	包名有时会被占用导致发布失败。可以引入作用域的形式来命名包名。如`package.json`中的:
+    `"name": "@wuchuhengtools/promise-router"`，发布时需要加上参数: `npm publish --access=public`。前者说明这个包在`wuchuhengtools`名下， 后者参数表示为公开包发布。
+
+ {% endnote %}
+
+
 #### 1.2.8 本地开发
 &emsp;在包中运行`npm run build -w`，然后源一修改就是构建到`dist`目录中。   
-&emsp;在本地测试，如一个项目中直接使用这个包，可以使用本地链接的方式把正在编辑的包引入进来，在别的项目中执行`npm link <包的目录位置>`。  
+&emsp;在本地测试，如一个项目中直接使用这个包，可以使用本地链接的方式把正在编辑的包引入进来，在别的项目中执行就能使用了:
+``` bash
+$ npm link # 正在开发的包的根目录，把包名登录出去
+up to date, audited 2 packages in 1s
+found 0 vulnerabilities
+$ npm link jequest # 到你引用这个包项目的根目录，直接引用本地包jequest
+```
 &emsp;这样就做到了包一更改，就构建生成，然后直接使用。确定没问题再发布出去。很适合开发下流程。
 
 
 #### 1.2.9 做下收尾
 &emsp;到了这里，一个能用包就已经发布并能使用了，但在发布的包也包含有一些没有必要包含进行的文件，如:
 ``` bash 
-    echo "idea" > .npmignore # 发布时候不包含idea目录 一般只保留dist目录和配置文件，其它可以不包含在发布中，减小包的大小
+    echo "idea" > .npmignore # 发布时候不包含ide∑a目录 一般只保留dist目录和配置文件，其它可以不包含在发布中，减小包的大小
 ```
 &emsp; 而`.gitignore`也是：
 ``` bash
@@ -270,5 +283,118 @@ hello! hello!!!
 node_modules
 dist
 ```
-&emsp; 这是最终的代码自己，[`wuchuheng/jequest`](https://github.com/wuchuheng/jequest/tree/648d2bed6d2b29f46cdac8b22a7d2dae18788908)  
+&emsp; 这是最终的代码自己，[`wuchuheng/jequest`](https://github.com/wuchuheng/jequest/tree/ba67dc84c1c55cb6e1c64b0f4f27dbd6002a3581)
 &emsp;一个单纯能用的包基本的部分大概就这些，后面就是一些测试之类附加的再说吧。
+
+
+### 2 单元测试
+&emsp; 单元测试很重要，随着软件功能迭代，代码量增多，开发者很难顾全在耦合度高的程序中开发是否会影响到其它功能的。通过单元测试能够及时发现开发者的发去是否对之前的功能有影响从而及时修正也能持续迭代更新。  
+&emsp;这里的单元测试采用`jest`库来实现。需要安装:  
+``` typescript
+$ yarn add @types/jest ts-jest -D
+```
+分别是jest类型库， `jest`和`jest`的`jest`的ts支持。添加测试的配置文件:
+``` bash
+ $ npx ts-jest config:init # 生成配置文件
+ Jest configuration written to "/Users/wuchuheng/Desktop/myProject/a1206/tmp/promise-router/jest.config.js".
+```
+文件内容为: 
+``` js
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+};	
+```
+再加一行`collectCoverage:true`, 用于执行测试时也生成报告文件:
+```  js
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  collectCoverage:true
+};
+```
+把之前写的`index.ts`和`global.d.ts`在项目根目录中增加个`src`目录，然后放进去。再加个`test`目录用于放测试文件。在`test`目录中再个用于测试`index.ts`的`index.test.ts`文件。整个目录结构为:
+``` bash
+.
+├── README.md
+├── jest.config.js
+├── package-lock.json
+├── package.json
+├── src
+│   ├── global.d.ts
+│   └── index.ts
+├── test
+│   └── index.test.ts
+├── tsconfig.json
+└── yarn.lock
+```
+当中`index.test.ts`内容为：
+``` javascript 
+import router from '../src/index';
+
+test('#main function test', async () => {
+    const res = await router('/me/devices/:id/files/:fileId', '/me/devices/1/files/2') as MainFunction.RouterResType
+    expect(res.routeParams.id).toBe('1')
+    expect(res.routeParams.fileId).toBe('2')
+    await expect(router('/me/devices/:id/files/:fileId', '/me/devices/1/files')).rejects.toBe("the route was't matched")
+})
+```
+分别有3个断言，2个是成功返回的断言， 一个是失败的断言。这些断言组成一个 默认导出函数的输入和输出的测试。  
+&emsp; `package.json`中加入:
+``` json
+...
+ "scripts": {
+    "test": "jest --config=jest.config.js",
+    "prepublish": "npm run build",
+    "build": "tsc"
+  },
+  ...
+```
+然后运行`npm run test`执行测试:
+``` bash 
+yarn run v1.22.10
+$ jest --config=jest.config.js
+ PASS  test/index.test.ts
+  ✓ #main function test (3 ms)
+
+----------|---------|----------|---------|---------|-------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------|---------|----------|---------|---------|-------------------
+All files |     100 |      100 |     100 |     100 |                   
+ index.ts |     100 |      100 |     100 |     100 |                   
+----------|---------|----------|---------|---------|-------------------
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.587 s, estimated 1 s
+Ran all test suites.
+✨  Done in 1.36s.
+```
+#### 2.1 开发小技巧
+如果第次测试出错了，修改完再测试一次，很浪费时间。可以这样:
+``` bash
+$ npx jest --config=jest.config.js --watch #以监听模式文件改动来重启测试
+No tests found related to files changed since last commit.
+Press `a` to run all tests, or run Jest with `--watchAll`.
+----------|---------|----------|---------|---------|-------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------|---------|----------|---------|---------|-------------------
+All files |       0 |        0 |       0 |       0 |                   
+----------|---------|----------|---------|---------|-------------------
+
+Watch Usage
+ › Press a to run all tests.
+ › Press f to run only failed tests.
+ › Press p to filter by a filename regex pattern.
+ › Press t to filter by a test name regex pattern.
+ › Press q to quit watch mode.
+ › Press Enter to trigger a test run.
+ PASS  test/index.test.ts
+  ✓ #main function test (3 ms)
+...
+```
+#### 2.2 测试覆盖率
+(要吃饭了，下回再说)，先参考这个先 https://github.com/wuchuhengtools/promise-router/tree/e445673c8c283fa81208bfbf07fe74898cb0f4cd
+
+### 参考资料
+* [The 30-second guide to publishing a TypeScript package to NPM](https://medium.com/cameron-nokes/the-30-second-guide-to-publishing-a-typescript-package-to-npm-89d93ff7bccd)

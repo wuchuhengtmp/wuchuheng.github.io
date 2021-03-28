@@ -135,6 +135,21 @@ https://losadhwselfff2332dasd.xyz/link/TCkL1Y4jJASCXhtT?sub=1
 
 {% endnote %}
 
+
+{% note success %}
+[【mac】surge](https://nssurge.com/)
+key:  FVVFA-LQQRE-JMYJE-GVHQS-XBQEN
+email: wuchuheng@163.com
+
+{% endnote %}
+
+{% note success %}
+[【windowns】 shadowsocksR](https://qiniu.wuchuheng.com/tools/ShadowsocksR-Portable-Win64-5.1.10.7z)
+https://losadhwselfff2332dasd.xyz/link/TCkL1Y4jJASCXhtT?sub=1
+
+{% endnote %}
+
+
 #### 1.2.1 安卓usb共享到mac上网驱动
 {% note primary %}
 [【mac】HoRNDIS](https://qiniu.wuchuheng.com/tools/HoRNDIS-rel7.pkg)
