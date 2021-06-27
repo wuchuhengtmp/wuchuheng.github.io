@@ -45,3 +45,4 @@ ftp -ivn <<EOF
     put hexo-admin-ehc-images.json /hexo-admin-ehc-images.json hexo
     quit
 EOF
+
