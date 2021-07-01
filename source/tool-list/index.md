@@ -1,6 +1,8 @@
 title: 工具
 date: 2020-03-30 07:33:52
 ---
+
+
 ## 1 开发类
 
 #### 1.1.1 navicat
@@ -199,18 +201,28 @@ https://losadhwselfff2332dasd.xyz/link/TCkL1Y4jJASCXhtT?sub=1
 	[【mac】proxifier](https://qiniu.wuchuheng.com/tools/QtScrcpy-mac-x64-v1.4.1.dmg)
 {% endnote %}
 
+{% note warning  %}
+	电脑控制 Android 手机
+	开源地址:https://github.com/barry-ran/QtScrcpy
+	[【mac】qtscrcpy](https://qiniu.wuchuheng.com/picgo/QtScrcpy-mac-x64-v1.6.0.dmg)
+{% endnote %}
 
 
 
 
-### 2 办公类
+### 2 工具网站
+
+{% note warning  %}
+	[【codepen.io】](https://codepen.io/trending)
+	[【stackblitz】](https://stackblitz.com/ )
+{% endnote %}
+
+### 3 办公类
 
 ####  2.1 解压
 
 {% note success %}
 [【windowns】7z](https://qiniu.wuchuheng.com/tools/7z1900-x64.exe)
 {% endnote %}
-
-
 
 

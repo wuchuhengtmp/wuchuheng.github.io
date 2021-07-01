@@ -40,3 +40,9 @@ CoveAiVAgMBAAGjgZkwgZYwSAYDVR0jBEEwP4AUo562SGdCEjZBvW3gubSgUouX8bOhHKQaMBgxFjAUB
 
 -javaagent:c:\Users\Public\.BetterIntelliJ\BetterInterlliJ-1.16.jar
 
+
+新方案重置
+https://qiniu.wuchuheng.com/images/ide-eval-resetter-2.1.13.zip
+
+
+

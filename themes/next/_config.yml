@@ -209,29 +209,28 @@ links_title: Links
 links_layout: block
 #links_layout: inline
 links:
-  hexo文档: https://hexo.io/zh-cn/docs/index.html
   主题文档: http://theme-next.iissnan.com
   linux学习平台: http://www.linuxeye.com
-  git使用手册 : https://git-scm.com/book/zh/v2
   highlightjs : https://highlightjs.org
   docker : https://hub.docker.com/u/wuchuheng/
   cnlox : http://xiaohanyu.me
   vim从入门到精通 : http://xiaohanyu.me
-  刺客博客 : https://cikeblog.com/
   算法牛人 : https://hydingsy.github.io/
   牛人 : http://xargin.com/readings/
   githhub开源书 : https://ebookfoundation.github.io/free-programming-books/
   赖经纬: https://laijw.com/
-  next主题参考: https://hasaik.com/
   阮一峰: https://runyifeng.com
   全栈大牛: https://shuwoom.com/
-  v2ray文档: https://www.v2ray.com/
   主题参考: https://lq782655835.github.io/blogs/
   视觉: https://bbs.cvmart.net/
   iot: https://developer.ibm.com/technologies/iot/gettingstarted/
   可能是东半球最好的php程序员: http://t.ti-node.com
   golang笔记: http://www.topgoer.com
   无双(golang): https://leaxoy.github.io/
+  耗子叔: https://coolshell.cn/
+  面向信仰编程: https://draveness.me/
+  StEve Young: https://buptsteve.github.io/blog/
+  稚晖: http://www.pengzhihui.xyz/
         
 
 # Sidebar Avatar

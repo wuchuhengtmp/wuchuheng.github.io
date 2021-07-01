@@ -182,7 +182,7 @@ npm notice Log in on https://registry.npmjs.org/
 Username: wuchuheng
 Password: 
 Email: (this IS public) wuchuheng@163.com
-$ npm publish #然后直接发布
+$ npm publish --access public #然后直接发布
 npm notice 
 npm notice 📦  jequest@1.0.8
 npm notice === Tarball Contents === 

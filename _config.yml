@@ -76,3 +76,7 @@ search:
 deploy:
   # type: git
   # repo: git@e.coding.net:wuchuheng/wuchuheng.coding.me.git
+admin:
+  username: wuchuheng
+  password_hash: $2a$10$JBXgPoZbwc1CQOHtLaTnE.WHxnUV4TI0djeoLkjigxIinPr0x2P8q
+  secret: my super secret phrase

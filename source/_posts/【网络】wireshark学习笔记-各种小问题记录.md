@@ -14,3 +14,8 @@ date: 2021-04-01 18:35:00
 运行`sudo chmod 777 /dev/bpf*`
 
 <!--more-->
+
+wireshark抓取环回链路数据包
+
+为什么wireshark抓包抓不到本机自己跟自己的通信包，因为本机发完本机的数据包不会经过网卡,
+而是经过环回链路返回本机，如果要监听环路链路，wireshark需要监听Loopback:lo0

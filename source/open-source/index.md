@@ -46,3 +46,26 @@ router('/me/devices/:id/files/:fileId', '/me/devices/11111/files/22222').then(e 
     console.log(e) // { "routeParams": { "id": "sdfasdfadsfasd", "fileId": "22222" } 
 })
 ```
+### 2.1.1 GBK中文转码解析器
+
+[![Build Status](https://travis-ci.org/wuchuhengtools/gbk-parser.svg?branch=master)](https://travis-ci.org/wuchuhengtools/gbk-parser)
+[![codecov](https://codecov.io/gh/wuchuhengtools/gbk-parser/branch/master/graph/badge.svg?token=R4VV625A4V)](https://codecov.io/gh/wuchuhengtools/gbk-parser)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fwuchuhengtools%2Fgbk-parser.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fwuchuhengtools%2Fgbk-parser?ref=badge_shield)
+
+## Installing
+
+```shell
+$ npm i @wuchuhengtools/gbk-parser
+
+```
+
+## Usage
+
+``` typescript
+import {decodeByHex} from "@wuchuhengtools/gbk-parser"
+// ...
+ const rest = decodeByHex("d4c1414243303031")
+console.log(rest) //粤ABC001
+
+
+```

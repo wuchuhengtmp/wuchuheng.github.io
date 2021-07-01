@@ -14,7 +14,7 @@ date: 2019-01-07 01:45:00
 #### 1.1 本地ssh客户端转发
 注：windowns系统可以安装个`git`命令行客户端当成ssh用户端用。回车输入密码，登录启动转发。
 ``` bash
-ssh -N -D 127.0.0.1:端口 用户名@服务器  
+ssh -NfD 6666 用户名@服务器
 ```
 #### 1.2 chrome 浏览器端口转发
 安装个[`SwitchyOmega`](https://github.com/FelisCatus/SwitchyOmega/releases),选择`crx`后缀文件名下载，并打开谷歌扩展->选择开发者模式->把下载的插件安装文件拖过去。
