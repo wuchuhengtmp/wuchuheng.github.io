@@ -10,6 +10,7 @@ date: 2020-03-30 07:33:52
 国产数据库软件
 [【mac】navicat](http://qiniu.wuchuheng.com/Navicat_Premium_15.0.12_macwk.com.dmg)
 [【windows】navicat](http://qiniu.wuchuheng.com/navicat%E4%B8%AD%E6%96%87%E7%89%88%E7%A0%B4%E8%A7%A3.zip)
+[【mac】navicat M1](https://qiniu.wuchuheng.com/tools/NavicatPremium15029%207.29.24%20PM.zip)
 [【sequelpro】](https://www.sequelpro.com)
 {% endnote %}
 

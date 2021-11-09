@@ -1,4 +1,4 @@
-# ---------------------------------------------------------------
+
 # Theme Core Configuration Settings
 # ---------------------------------------------------------------
 
@@ -231,7 +231,9 @@ links:
   面向信仰编程: https://draveness.me/
   StEve Young: https://buptsteve.github.io/blog/
   稚晖: http://www.pengzhihui.xyz/
-        
+  Bo-yi wu: https://blog.wu-boy.com/
+  寒雁: https://kiwenlau.com/
+  rxjs相关博客: https://ithelp.ithome.com.tw/articles/10186104
 
 # Sidebar Avatar
 avatar:
